@@ -1,9 +1,9 @@
 const firebaseConfig = {
-    apiKey: "AIzaSyDfiu5rFEeyd8sSFU9WzFcK9JIy_c3G8TE",
-    authDomain: "senaccrawlers.firebaseapp.com",
-    projectId: "senaccrawlers",
-    storageBucket: "senaccrawlers.firebasestorage.app",
-    messagingSenderId: "807998155214",
-    appId: "1:807998155214:web:e33c3f48b3af658ea6e39f",
-    measurementId: "G-6VFYPRSP84"
-};
+    apiKey: "AIzaSyAOXr25ggEwrH5dMzKcEkqyGwdUYMVcv1A",
+    authDomain: "projetoorbital-fc364.firebaseapp.com",
+    projectId: "projetoorbital-fc364",
+    storageBucket: "projetoorbital-fc364.firebasestorage.app",
+    messagingSenderId: "1028463790739",
+    appId: "1:1028463790739:web:de2ebfcdeeeede80465b66",
+    measurementId: "G-8HL08S3SYP"
+  };
