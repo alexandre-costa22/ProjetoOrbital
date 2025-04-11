@@ -1,0 +1,368 @@
+body {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+}
+
+.containerEdital{
+    width: auto;
+    align-content: center;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+.header {
+    justify-content: space-between;
+    padding: 20px;
+    align-items: center;
+}
+
+.titulo {
+    font-size: 32px;
+    padding: 10px;
+    text-align: center;
+}
+
+.main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.logoEmpresas {
+    width: 500px;
+    height: 300px;
+}
+
+.header{
+    background-color: #000000;
+    color: #ffffff;
+    font-family: 'Inter';
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 15.73px;
+    text-align: right;
+    border: solid 3px #000000 ;
+}
+
+.header img{
+    width: 18px;
+    height: 17px;
+    padding-left: 2px;
+
+}
+
+a {
+    display: inline-flex;
+  }
+
+.icones{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; 
+
+}
+
+.titulo, .titulo h1 {
+    background-color: #2A8168;
+    margin: 0px;
+    font-family: 'Koulen';
+    color: #ffffff;
+    font-size: 28px; 
+}
+
+.titulo {
+    height: 51px;
+    display: grid;
+    align-items: center;
+    text-align: center;
+    border: solid #000000 1px;
+}
+
+.opcoes{
+    display: flex; 
+    justify-content: center !important;
+    border-bottom: solid black 1PX ;
+}
+
+.vejaMais{
+    background-color: #2A8168 !important;
+    color: #ffffff !important;
+    cursor: pointer;
+    flex: 1 1 100%; 
+    margin: 10px 0px 0px 30px; 
+    height: 40px; 
+    border-radius: 5px;
+    border: none;
+}
+
+.receberEmail{
+    display: flex !important;
+    justify-content: flex-end !important;
+}
+
+.description{
+    display: grid;
+}
+
+a{
+    text-decoration: none;
+}
+
+.infos{
+    width: 800px}
+
+.main{
+    padding: 20px;
+    border-width: 0px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    box-shadow: 0 10px 3px rgba(0,0,0,0.30), 0 1px 8px rgba(0,0,0,0.22);
+}
+
+.containerEdital{
+    width: auto;
+    align-content: center;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+h2, article {
+  margin: 10px;
+  min-width: 200px;
+  flex: 1 1 100%; 
+}
+
+span{
+  margin: 10px;
+}
+
+
+select{
+    border: none;
+    margin-right: 15px;
+}
+
+.opcoes {
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-start; 
+    margin-bottom: -1.25em;
+}
+
+.filters-container {
+    display: flex;
+    gap: 16px;
+    align-self: center; 
+}
+
+.footer{
+    padding-bottom: 10PX;
+    margin-left: 0px;
+    display: block !important;
+}
+
+.recebeEditaisBtn{
+    position: fixed;
+    bottom: 20px; 
+    right: 20px;  
+    border: none;
+    height: 60px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
+    cursor: pointer;
+    margin: 10px 0px 0px 10px; 
+    height: 40px; 
+    margin-bottom: 20px;
+}
+
+.recebeEditaisBtn:hover {
+    background-color: #2A8168;
+    color: #ffffff;
+  }
+
+.pagination-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .pagination-controls button {
+    padding: 5px 15px;
+    margin: 0 10px;
+    cursor: pointer;
+  }
+  
+  .pagination-controls button[disabled] {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .pagination-controls span {
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logoEmpresas{
+    margin-top: 20px;
+    width: 400px;
+    height: 200px;
+    border-radius: 5px;
+  }
+
+.container-fluid {
+    padding: 0;
+}
+
+.header {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.titulo {
+    font-size: 2rem;
+    text-align: center;
+}
+
+.opcoes {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+}
+
+.filters-container {
+    width: 100%;
+}
+
+.filters-container mat-form-field {
+    width: 100%;
+}
+
+.main {
+    align-items: center;
+    padding: 20px;
+}
+
+.infos {
+    width: 100%;
+    max-width: 800px;
+    font-size: xx-large;
+}
+
+.logoEmpresas {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+}
+
+@media (max-width: 768px) {
+    .header {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .titulo {
+        font-size: 1.5rem;
+        padding: 10px 0;
+    }
+
+    .filters-container {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+
+    .filters-container mat-form-field {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .main {
+        padding: 10px;
+        box-shadow: none;
+    }
+
+    .infos {
+        width: 90%;
+    }
+
+    .logoEmpresas {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .pagination-controls {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .titulo {
+        font-size: 1.25rem;
+        padding: 5px;
+    }
+
+    .filters-container mat-form-field {
+        width: 100%;
+    }
+
+    .main {
+        padding: 10px;
+        box-shadow: 0 10px 3px rgba(0, 0, 0, 0.30), 0 1px 8px rgba(0, 0, 0, 0.22);
+    }
+
+    .infos {
+        width: 100%;
+    }
+
+    .logoEmpresas {
+        width: 100%;
+        height: auto;
+    }
+
+    .pagination-controls button {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+}
+
+
+@media (min-width: 1440px) {
+    .containerEdital{
+        display: grid;
+        width: auto;
+        align-content: center;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+
+    .titulo {
+        font-size: 36px;
+    }
+
+    .logoEmpresas {
+        width: 600px;
+        height: 400px;
+    }
+
+    .main {
+        width: 2000px;
+        justify-content: center;
+        padding: 40px;
+    }
+
+    .pagination-controls button {
+        padding: 10px 25px;
+        font-size: 18px; 
+    }
+}

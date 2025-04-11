@@ -1,0 +1,26 @@
+<div class="login">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Crie uma conta</title>
+    </head>
+
+    <body>
+        <div class="page">
+            <form method="POST" class="formLogin">
+                <h1>Cadastre-se</h1>
+                <p>Digite os seus dados de acesso no campo abaixo.</p>
+                <label for="email">E-mail</label>
+                <input autocomplete="on" id="email" name="email" [(ngModel)]="usuario.email" type="email" placeholder="Digite seu e-mail"
+                    autofocus="true" />
+                <label for="password">Senha</label>
+                <input id="password" name="password" [(ngModel)]="usuario.senha" type="password" placeholder="Digite seu e-mail" />
+                <input (click)="register(usuario.email, usuario.senha)" type="submit" value="Cadastrar" class="btn" />
+                <a routerLink="/login" routerLinkActive="active">Fazer login</a>
+            </form>
+        </div>
+
+    </body>
+</div>

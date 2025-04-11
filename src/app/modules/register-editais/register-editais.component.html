@@ -1,0 +1,82 @@
+<div class="login">
+    <body>
+        <div class="page">
+            <form>
+                <div class="formLogin" *ngIf="!gatilhoAtualiza">
+                    <h1>Adicionar Edital</h1>
+                    <label for="titulo">Título:</label>
+                    <input type="text" placeholder="Título do Edital" id="titulo" [(ngModel)]="newEdital.titulo" name="titulo" required />
+
+                    <label for="descricao">Descrição:</label>
+                    <input type="text" placeholder="Descrição do Edital" id="descricao" [(ngModel)]="newEdital.descricao" name="descricao" required />
+
+                    <label for="nome_banca">Banca:</label>
+                    <select id="nome_banca" [(ngModel)]="newEdital.nome_banca" name="nome_banca" required>
+                        <option *ngFor="let banca of bancas" [value]="banca.nome_banca">{{ banca.nome_banca }}</option>
+                    </select>
+
+                    <label for="valor">Valor:</label>
+                    <input type="text" placeholder="Valor do Edital" id="valor" [(ngModel)]="newEdital.valor" name="valor" required />
+
+                    <label for="link">Link:</label>
+                    <input type="text" placeholder="Link do Edital" id="link" [(ngModel)]="newEdital.link" name="link" required />
+
+                    <label for="vencimento">Data de Vencimento:</label>
+                    <input type="date" id="vencimento" [(ngModel)]="newEdital.vencimento" name="vencimento" required />
+
+                    <label for="data_publicacao">Data de Publicação:</label>
+                    <input type="date" id="data_publicacao" [(ngModel)]="newEdital.data_publicacao" name="data_publicacao" required />
+
+                    <input (click)="addEdital()" type="submit" value="Adicionar Edital" class="btn" />
+
+                    <h2>Listagem de Editais</h2>
+                    <div>
+                        <div *ngFor="let edital of editais">
+                            <div style="height: 40px;">
+                                <strong>
+                                    <p style="padding-right: 5px;">{{ edital.titulo }}</p>
+                                </strong>
+                                <p>{{ edital.vencimento | date : 'dd/MM/yyyy' }}</p>
+                            </div>
+                            <button style="margin-right: 10px !important;" class="btn" (click)="deleteEdital(edital.id)">Deletar</button>
+                            <button (click)="gatilhoAtualizacao(edital.titulo, edital.descricao, edital.nome_banca, edital.valor, edital.link, edital.vencimento, edital.data_publicacao, edital.id)" class="btn">Editar</button>
+                        </div>
+                        <br>
+                        <a routerLink="/main" routerLinkActive="active">Voltar para a página principal</a>
+                    </div>
+                </div>
+
+                <div class="formLogin" *ngIf="gatilhoAtualiza">
+                    <h1>Editar Edital</h1>
+                    <label for="titulo">Título:</label>
+                    <input id="titulo" type="text" [(ngModel)]="newEdital.titulo" name="titulo" required />
+
+                    <label for="descricao">Descrição:</label>
+                    <input id="descricao" type="text" [(ngModel)]="newEdital.descricao" name="descricao" required />
+
+                    <label for="nome_banca">Banca:</label>
+                    <select id="nome_banca" [(ngModel)]="newEdital.nome_banca" name="nome_banca" required>
+                        <option *ngFor="let banca of bancas" [value]="banca.nome_banca">{{ banca.nome_banca }}</option>
+                    </select>
+
+                    <label for="valor">Valor:</label>
+                    <input id="valor" type="text" [(ngModel)]="newEdital.valor" name="valor" required />
+
+                    <label for="link">Link:</label>
+                    <input id="link" type="text" [(ngModel)]="newEdital.link" name="link" required />
+
+                    <label for="vencimento">Data de Vencimento:</label>
+                    <input id="vencimento" type="date" [(ngModel)]="newEdital.vencimento" name="vencimento" required />
+
+                    <label for="data_publicacao">Data de Publicação:</label>
+                    <input id="data_publicacao" type="date" [(ngModel)]="newEdital.data_publicacao" name="data_publicacao" required />
+
+                    <button (click)="updateEdital(this.idAtual)" class="btn">Atualizar Edital</button>
+                    <button (click)="gatilhoAtualizacao()" type="button" class="btn">Voltar</button>
+                    <a routerLink="/main" routerLinkActive="active">Voltar para a página principal</a>
+                </div>
+            </form>
+        </div>
+    </body>
+</div>
+<br><br>

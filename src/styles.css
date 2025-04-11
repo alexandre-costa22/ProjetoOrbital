@@ -1,0 +1,48 @@
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+.mdc-line-ripple {
+    display: none !important;
+  }
+
+html, body {
+  overflow: visible !important;
+  position: relative;
+  margin: auto !important;
+}
+
+:host ::ng-deep .mat-form-field-wrapper{
+  margin: 0 !important;
+  padding: 0;
+}
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled){
+  background-color: transparent !important;
+}
+
+.mat-mdc-form-field-subscript-wrapper {
+  margin: 0; 
+  padding: 0;
+}
+
+.mat-mdc-form-field-bottom-align {
+  align-items: center; 
+  height: 0px;
+}
+
+.mat-mdc-outlined-button:hover{
+  background-color: #2A8168 !important;
+  color: white !important;
+}
+
+mat-progress-bar {
+  background-color: #2A8168 !important; 
+
+}
+
+.mat-mdc-progress-bar{
+  --mdc-linear-progress-active-indicator-color: #104133 !important
+}
+
+.mat-mdc-form-field-infix{
+  flex: none;
+}

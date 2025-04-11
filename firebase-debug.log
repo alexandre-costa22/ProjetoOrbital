@@ -1,0 +1,227 @@
+[debug] [2024-11-30T17:47:55.842Z] ----------------------------------------------------------------------
+[debug] [2024-11-30T17:47:55.845Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\alexa\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js emulators:start
+[debug] [2024-11-30T17:47:55.845Z] CLI Version:   13.27.0
+[debug] [2024-11-30T17:47:55.845Z] Platform:      win32
+[debug] [2024-11-30T17:47:55.845Z] Node Version:  v20.15.1
+[debug] [2024-11-30T17:47:55.846Z] Time:          Sat Nov 30 2024 14:47:55 GMT-0300 (Horário Padrão de Brasília)
+[debug] [2024-11-30T17:47:55.846Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-11-30T17:47:55.976Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-11-30T17:47:55.976Z] > authorizing via signed-in user (alecodetuc2018@gmail.com)
+[debug] [2024-11-30T17:47:56.288Z] openjdk version "17.0.11" 2024-04-16
+OpenJDK Runtime Environment Temurin-17.0.11+9 (build 17.0.11+9)
+
+[debug] [2024-11-30T17:47:56.289Z] OpenJDK 64-Bit Server VM Temurin-17.0.11+9 (build 17.0.11+9, mixed mode, sharing)
+
+[debug] [2024-11-30T17:47:56.305Z] Parsed Java major version: 17
+[info] i  emulators: Starting emulators: hosting, storage {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: hosting, storage"}}
+[debug] [2024-11-30T17:47:56.315Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2024-11-30T17:47:56.315Z] [hosting] Hosting Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2024-11-30T17:47:56.316Z] [storage] Storage Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2024-11-30T17:47:56.316Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"hosting":[{"address":"127.0.0.1","family":"IPv4","port":5000}],"storage":[{"address":"127.0.0.1","family":"IPv4","port":9199}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[debug] [2024-11-30T17:47:56.320Z] [hub] writing locator at C:\Users\alexa\AppData\Local\Temp\hub-senaccrawlers.json
+[info] i  storage: downloading cloud-storage-rules-runtime-v1.1.3.jar... {"metadata":{"emulator":{"name":"storage"},"message":"downloading cloud-storage-rules-runtime-v1.1.3.jar..."}}
+[debug] [2024-11-30T17:47:56.335Z] >>> [apiv2][query] GET https://storage.googleapis.com/firebase-preview-drop/emulator/cloud-storage-rules-runtime-v1.1.3.jar 
+[debug] [2024-11-30T17:47:56.726Z] <<< [apiv2][status] GET https://storage.googleapis.com/firebase-preview-drop/emulator/cloud-storage-rules-runtime-v1.1.3.jar 200
+[debug] [2024-11-30T17:47:56.726Z] <<< [apiv2][body] GET https://storage.googleapis.com/firebase-preview-drop/emulator/cloud-storage-rules-runtime-v1.1.3.jar [stream]
+[debug] [2024-11-30T17:48:46.427Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"storage"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2024-11-30T17:48:47.244Z] Temp file directory for storage emulator: C:\Users\alexa\AppData\Local\Temp/firebase/storage/blobs {"metadata":{"emulator":{"name":"storage"},"message":"Temp file directory for storage emulator: C:\\Users\\alexa\\AppData\\Local\\Temp/firebase/storage/blobs"}}
+[debug] [2024-11-30T17:48:47.253Z] Checked if tokens are valid: true, expires at: 1732992026662
+[debug] [2024-11-30T17:48:47.253Z] Checked if tokens are valid: true, expires at: 1732992026662
+[debug] [2024-11-30T17:48:47.254Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/senaccrawlers/sites 
+[debug] [2024-11-30T17:48:49.378Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/senaccrawlers/sites 200
+[debug] [2024-11-30T17:48:49.378Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/senaccrawlers/sites {"sites":[{"name":"projects/senaccrawlers/sites/senaccrawlers","defaultUrl":"https://senaccrawlers.web.app","type":"DEFAULT_SITE"}]}
+[debug] [2024-11-30T17:48:49.378Z] Checked if tokens are valid: true, expires at: 1732992026662
+[debug] [2024-11-30T17:48:49.378Z] Checked if tokens are valid: true, expires at: 1732992026662
+[debug] [2024-11-30T17:48:49.378Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/senaccrawlers/webApps/-/config [none]
+[debug] [2024-11-30T17:48:50.373Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/senaccrawlers/webApps/-/config 200
+[debug] [2024-11-30T17:48:50.373Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/senaccrawlers/webApps/-/config {"projectId":"senaccrawlers","appId":"1:807998155214:web:e33c3f48b3af658ea6e39f","storageBucket":"senaccrawlers.firebasestorage.app","apiKey":"AIzaSyDfiu5rFEeyd8sSFU9WzFcK9JIy_c3G8TE","authDomain":"senaccrawlers.firebaseapp.com","messagingSenderId":"807998155214","measurementId":"G-6VFYPRSP84"}
+[debug] [2024-11-30T17:48:50.382Z] Checked if tokens are valid: true, expires at: 1732992026662
+[debug] [2024-11-30T17:48:50.383Z] Checked if tokens are valid: true, expires at: 1732992026662
+[debug] [2024-11-30T17:48:50.383Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/senaccrawlers [none]
+[debug] [2024-11-30T17:48:50.752Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/senaccrawlers 200
+[debug] [2024-11-30T17:48:50.752Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/senaccrawlers {"projectId":"senaccrawlers","projectNumber":"807998155214","displayName":"senaccrawlers","name":"projects/senaccrawlers","resources":{"hostingSite":"senaccrawlers"},"state":"ACTIVE","etag":"1_94ddab5c-fef9-4b5e-9fee-a9cd212f1e42"}
+[debug] [2024-11-30T17:48:50.753Z] Specified "public" directory "public" does not exist; Deploy to Hosting site "senaccrawlers" may fail or be empty.
+[info] i  hosting[senaccrawlers]: Serving hosting files from: public {"metadata":{"emulator":{"name":"hosting"},"message":"Serving hosting files from: \u001b[1mpublic\u001b[22m"}}
+[info] +  hosting[senaccrawlers]: Local server: http://127.0.0.1:5000 {"metadata":{"emulator":{"name":"hosting"},"message":"Local server: \u001b[4m\u001b[1mhttp://127.0.0.1:5000\u001b[22m\u001b[24m"}}
+[info] i  ui: downloading ui-v1.14.0.zip... {"metadata":{"emulator":{"name":"ui"},"message":"downloading ui-v1.14.0.zip..."}}
+[debug] [2024-11-30T17:48:50.782Z] >>> [apiv2][query] GET https://storage.googleapis.com/firebase-preview-drop/emulator/ui-v1.14.0.zip 
+[debug] [2024-11-30T17:48:50.827Z] <<< [apiv2][status] GET https://storage.googleapis.com/firebase-preview-drop/emulator/ui-v1.14.0.zip 200
+[debug] [2024-11-30T17:48:50.827Z] <<< [apiv2][body] GET https://storage.googleapis.com/firebase-preview-drop/emulator/ui-v1.14.0.zip [stream]
+[debug] [2024-11-30T17:48:53.927Z] Data is 3615311
+[debug] [2024-11-30T17:48:53.927Z] [unzip] Entry: client/ (compressed_size=0 bytes, uncompressed_size=0 bytes)
+[debug] [2024-11-30T17:48:53.927Z] [unzip] Processing entry: client\
+[debug] [2024-11-30T17:48:53.928Z] [unzip] mkdir: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\client\
+[debug] [2024-11-30T17:48:53.929Z] [unzip] Entry: client/favicon-16x16.png (compressed_size=293 bytes, uncompressed_size=293 bytes)
+[debug] [2024-11-30T17:48:53.929Z] [unzip] Processing entry: client\favicon-16x16.png
+[debug] [2024-11-30T17:48:53.929Z] [unzip] else mkdir: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\client
+[debug] [2024-11-30T17:48:53.930Z] [unzip] Writing file: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\client\favicon-16x16.png
+[debug] [2024-11-30T17:48:53.962Z] [unzip] Entry: client/safari-pinned-tab.svg (compressed_size=1433 bytes, uncompressed_size=2611 bytes)
+[debug] [2024-11-30T17:48:53.963Z] [unzip] Processing entry: client\safari-pinned-tab.svg
+[debug] [2024-11-30T17:48:53.963Z] [unzip] else mkdir: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\client
+[debug] [2024-11-30T17:48:53.965Z] [unzip] deflating: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\client\safari-pinned-tab.svg
+[debug] [2024-11-30T17:48:53.970Z] [unzip] Entry: client/favicon.ico (compressed_size=2933 bytes, uncompressed_size=13294 bytes)
+[debug] [2024-11-30T17:48:53.970Z] [unzip] Processing entry: client\favicon.ico
+[debug] [2024-11-30T17:48:53.970Z] [unzip] else mkdir: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\client
+[debug] [2024-11-30T17:48:53.970Z] [unzip] deflating: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\client\favicon.ico
+[debug] [2024-11-30T17:48:53.972Z] [unzip] Entry: client/index.html (compressed_size=1363 bytes, uncompressed_size=3071 bytes)
+[debug] [2024-11-30T17:48:53.972Z] [unzip] Processing entry: client\index.html
+[debug] [2024-11-30T17:48:53.972Z] [unzip] else mkdir: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\client
+[debug] [2024-11-30T17:48:53.972Z] [unzip] deflating: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\client\index.html
+[debug] [2024-11-30T17:48:53.973Z] [unzip] Entry: client/android-chrome-192x192.png (compressed_size=2684 bytes, uncompressed_size=2684 bytes)
+[debug] [2024-11-30T17:48:53.973Z] [unzip] Processing entry: client\android-chrome-192x192.png
+[debug] [2024-11-30T17:48:53.973Z] [unzip] else mkdir: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\client
+[debug] [2024-11-30T17:48:53.973Z] [unzip] Writing file: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\client\android-chrome-192x192.png
+[debug] [2024-11-30T17:48:53.974Z] [unzip] Entry: client/apple-touch-icon.png (compressed_size=2123 bytes, uncompressed_size=2152 bytes)
+[debug] [2024-11-30T17:48:53.974Z] [unzip] Processing entry: client\apple-touch-icon.png
+[debug] [2024-11-30T17:48:53.974Z] [unzip] else mkdir: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\client
+[debug] [2024-11-30T17:48:53.974Z] [unzip] deflating: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\client\apple-touch-icon.png
+[debug] [2024-11-30T17:48:53.981Z] [unzip] Entry: client/android-chrome-512x512.png (compressed_size=5369 bytes, uncompressed_size=5411 bytes)
+[debug] [2024-11-30T17:48:53.981Z] [unzip] Processing entry: client\android-chrome-512x512.png
+[debug] [2024-11-30T17:48:53.981Z] [unzip] else mkdir: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\client
+[debug] [2024-11-30T17:48:53.982Z] [unzip] deflating: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\client\android-chrome-512x512.png
+[debug] [2024-11-30T17:48:53.983Z] [unzip] Entry: client/manifest.json (compressed_size=245 bytes, uncompressed_size=551 bytes)
+[debug] [2024-11-30T17:48:53.984Z] [unzip] Processing entry: client\manifest.json
+[debug] [2024-11-30T17:48:53.984Z] [unzip] else mkdir: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\client
+[debug] [2024-11-30T17:48:53.984Z] [unzip] deflating: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\client\manifest.json
+[debug] [2024-11-30T17:48:53.985Z] [unzip] Entry: client/robots.txt (compressed_size=26 bytes, uncompressed_size=26 bytes)
+[debug] [2024-11-30T17:48:53.985Z] [unzip] Processing entry: client\robots.txt
+[debug] [2024-11-30T17:48:53.985Z] [unzip] else mkdir: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\client
+[debug] [2024-11-30T17:48:53.986Z] [unzip] Writing file: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\client\robots.txt
+[debug] [2024-11-30T17:48:53.986Z] [unzip] Entry: client/mstile-150x150.png (compressed_size=2034 bytes, uncompressed_size=2034 bytes)
+[debug] [2024-11-30T17:48:53.986Z] [unzip] Processing entry: client\mstile-150x150.png
+[debug] [2024-11-30T17:48:53.986Z] [unzip] else mkdir: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\client
+[debug] [2024-11-30T17:48:53.986Z] [unzip] Writing file: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\client\mstile-150x150.png
+[debug] [2024-11-30T17:48:53.987Z] [unzip] Entry: client/assets/ (compressed_size=0 bytes, uncompressed_size=0 bytes)
+[debug] [2024-11-30T17:48:53.987Z] [unzip] Processing entry: client\assets\
+[debug] [2024-11-30T17:48:53.987Z] [unzip] mkdir: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\client\assets\
+[debug] [2024-11-30T17:48:53.987Z] [unzip] Entry: client/assets/index-ClZTY_JS.js.map (compressed_size=2328270 bytes, uncompressed_size=9947004 bytes)
+[debug] [2024-11-30T17:48:53.989Z] [unzip] Processing entry: client\assets\index-ClZTY_JS.js.map
+[debug] [2024-11-30T17:48:53.989Z] [unzip] else mkdir: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\client\assets
+[debug] [2024-11-30T17:48:54.011Z] [unzip] deflating: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\client\assets\index-ClZTY_JS.js.map
+[debug] [2024-11-30T17:48:54.083Z] [unzip] Entry: client/assets/index-ClZTY_JS.js (compressed_size=567195 bytes, uncompressed_size=2035940 bytes)
+[debug] [2024-11-30T17:48:54.083Z] [unzip] Processing entry: client\assets\index-ClZTY_JS.js
+[debug] [2024-11-30T17:48:54.083Z] [unzip] else mkdir: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\client\assets
+[debug] [2024-11-30T17:48:54.083Z] [unzip] deflating: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\client\assets\index-ClZTY_JS.js
+[debug] [2024-11-30T17:48:54.094Z] [unzip] Entry: client/assets/index-BdgySamB.css (compressed_size=35979 bytes, uncompressed_size=298654 bytes)
+[debug] [2024-11-30T17:48:54.094Z] [unzip] Processing entry: client\assets\index-BdgySamB.css
+[debug] [2024-11-30T17:48:54.094Z] [unzip] else mkdir: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\client\assets
+[debug] [2024-11-30T17:48:54.094Z] [unzip] deflating: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\client\assets\index-BdgySamB.css
+[debug] [2024-11-30T17:48:54.097Z] [unzip] Entry: client/assets/extensions/ (compressed_size=0 bytes, uncompressed_size=0 bytes)
+[debug] [2024-11-30T17:48:54.097Z] [unzip] Processing entry: client\assets\extensions\
+[debug] [2024-11-30T17:48:54.097Z] [unzip] mkdir: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\client\assets\extensions\
+[debug] [2024-11-30T17:48:54.097Z] [unzip] Entry: client/assets/extensions/default-extension.png (compressed_size=1646 bytes, uncompressed_size=1657 bytes)
+[debug] [2024-11-30T17:48:54.097Z] [unzip] Processing entry: client\assets\extensions\default-extension.png
+[debug] [2024-11-30T17:48:54.097Z] [unzip] else mkdir: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\client\assets\extensions
+[debug] [2024-11-30T17:48:54.097Z] [unzip] deflating: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\client\assets\extensions\default-extension.png
+[debug] [2024-11-30T17:48:54.098Z] [unzip] Entry: client/assets/img/ (compressed_size=0 bytes, uncompressed_size=0 bytes)
+[debug] [2024-11-30T17:48:54.099Z] [unzip] Processing entry: client\assets\img\
+[debug] [2024-11-30T17:48:54.099Z] [unzip] mkdir: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\client\assets\img\
+[debug] [2024-11-30T17:48:54.099Z] [unzip] Entry: client/assets/img/database.png (compressed_size=29449 bytes, uncompressed_size=29988 bytes)
+[debug] [2024-11-30T17:48:54.099Z] [unzip] Processing entry: client\assets\img\database.png
+[debug] [2024-11-30T17:48:54.099Z] [unzip] else mkdir: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\client\assets\img
+[debug] [2024-11-30T17:48:54.099Z] [unzip] deflating: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\client\assets\img\database.png
+[debug] [2024-11-30T17:48:54.100Z] [unzip] Entry: client/assets/provider-icons/ (compressed_size=0 bytes, uncompressed_size=0 bytes)
+[debug] [2024-11-30T17:48:54.100Z] [unzip] Processing entry: client\assets\provider-icons\
+[debug] [2024-11-30T17:48:54.100Z] [unzip] mkdir: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\client\assets\provider-icons\
+[debug] [2024-11-30T17:48:54.100Z] [unzip] Entry: client/assets/provider-icons/auth_service_saml.svg (compressed_size=575 bytes, uncompressed_size=1226 bytes)
+[debug] [2024-11-30T17:48:54.101Z] [unzip] Processing entry: client\assets\provider-icons\auth_service_saml.svg
+[debug] [2024-11-30T17:48:54.101Z] [unzip] else mkdir: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\client\assets\provider-icons
+[debug] [2024-11-30T17:48:54.101Z] [unzip] deflating: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\client\assets\provider-icons\auth_service_saml.svg
+[debug] [2024-11-30T17:48:54.102Z] [unzip] Entry: client/assets/provider-icons/auth_service_phone.svg (compressed_size=261 bytes, uncompressed_size=414 bytes)
+[debug] [2024-11-30T17:48:54.102Z] [unzip] Processing entry: client\assets\provider-icons\auth_service_phone.svg
+[debug] [2024-11-30T17:48:54.102Z] [unzip] else mkdir: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\client\assets\provider-icons
+[debug] [2024-11-30T17:48:54.102Z] [unzip] deflating: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\client\assets\provider-icons\auth_service_phone.svg
+[debug] [2024-11-30T17:48:54.103Z] [unzip] Entry: client/assets/provider-icons/auth_service_facebook.svg (compressed_size=289 bytes, uncompressed_size=457 bytes)
+[debug] [2024-11-30T17:48:54.103Z] [unzip] Processing entry: client\assets\provider-icons\auth_service_facebook.svg
+[debug] [2024-11-30T17:48:54.103Z] [unzip] else mkdir: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\client\assets\provider-icons
+[debug] [2024-11-30T17:48:54.103Z] [unzip] deflating: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\client\assets\provider-icons\auth_service_facebook.svg
+[debug] [2024-11-30T17:48:54.104Z] [unzip] Entry: client/assets/provider-icons/auth_service_game_center.svg (compressed_size=991 bytes, uncompressed_size=3921 bytes)
+[debug] [2024-11-30T17:48:54.104Z] [unzip] Processing entry: client\assets\provider-icons\auth_service_game_center.svg
+[debug] [2024-11-30T17:48:54.104Z] [unzip] else mkdir: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\client\assets\provider-icons
+[debug] [2024-11-30T17:48:54.104Z] [unzip] deflating: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\client\assets\provider-icons\auth_service_game_center.svg
+[debug] [2024-11-30T17:48:54.105Z] [unzip] Entry: client/assets/provider-icons/auth_service_apple.svg (compressed_size=230 bytes, uncompressed_size=334 bytes)
+[debug] [2024-11-30T17:48:54.105Z] [unzip] Processing entry: client\assets\provider-icons\auth_service_apple.svg
+[debug] [2024-11-30T17:48:54.105Z] [unzip] else mkdir: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\client\assets\provider-icons
+[debug] [2024-11-30T17:48:54.105Z] [unzip] deflating: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\client\assets\provider-icons\auth_service_apple.svg
+[debug] [2024-11-30T17:48:54.106Z] [unzip] Entry: client/assets/provider-icons/auth_service_github.svg (compressed_size=466 bytes, uncompressed_size=838 bytes)
+[debug] [2024-11-30T17:48:54.106Z] [unzip] Processing entry: client\assets\provider-icons\auth_service_github.svg
+[debug] [2024-11-30T17:48:54.106Z] [unzip] else mkdir: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\client\assets\provider-icons
+[debug] [2024-11-30T17:48:54.107Z] [unzip] deflating: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\client\assets\provider-icons\auth_service_github.svg
+[debug] [2024-11-30T17:48:54.113Z] [unzip] Entry: client/assets/provider-icons/auth_service_mslive.svg (compressed_size=203 bytes, uncompressed_size=378 bytes)
+[debug] [2024-11-30T17:48:54.114Z] [unzip] Processing entry: client\assets\provider-icons\auth_service_mslive.svg
+[debug] [2024-11-30T17:48:54.114Z] [unzip] else mkdir: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\client\assets\provider-icons
+[debug] [2024-11-30T17:48:54.114Z] [unzip] deflating: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\client\assets\provider-icons\auth_service_mslive.svg
+[debug] [2024-11-30T17:48:54.115Z] [unzip] Entry: client/assets/provider-icons/auth_service_yahoo.svg (compressed_size=577 bytes, uncompressed_size=1182 bytes)
+[debug] [2024-11-30T17:48:54.115Z] [unzip] Processing entry: client\assets\provider-icons\auth_service_yahoo.svg
+[debug] [2024-11-30T17:48:54.115Z] [unzip] else mkdir: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\client\assets\provider-icons
+[debug] [2024-11-30T17:48:54.115Z] [unzip] deflating: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\client\assets\provider-icons\auth_service_yahoo.svg
+[debug] [2024-11-30T17:48:54.117Z] [unzip] Entry: client/assets/provider-icons/auth_service_twitter.svg (compressed_size=444 bytes, uncompressed_size=751 bytes)
+[debug] [2024-11-30T17:48:54.117Z] [unzip] Processing entry: client\assets\provider-icons\auth_service_twitter.svg
+[debug] [2024-11-30T17:48:54.117Z] [unzip] else mkdir: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\client\assets\provider-icons
+[debug] [2024-11-30T17:48:54.117Z] [unzip] deflating: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\client\assets\provider-icons\auth_service_twitter.svg
+[debug] [2024-11-30T17:48:54.118Z] [unzip] Entry: client/assets/provider-icons/auth_service_play_games.svg (compressed_size=565 bytes, uncompressed_size=1173 bytes)
+[debug] [2024-11-30T17:48:54.119Z] [unzip] Processing entry: client\assets\provider-icons\auth_service_play_games.svg
+[debug] [2024-11-30T17:48:54.119Z] [unzip] else mkdir: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\client\assets\provider-icons
+[debug] [2024-11-30T17:48:54.119Z] [unzip] deflating: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\client\assets\provider-icons\auth_service_play_games.svg
+[debug] [2024-11-30T17:48:54.120Z] [unzip] Entry: client/assets/provider-icons/auth_service_email.svg (compressed_size=228 bytes, uncompressed_size=326 bytes)
+[debug] [2024-11-30T17:48:54.120Z] [unzip] Processing entry: client\assets\provider-icons\auth_service_email.svg
+[debug] [2024-11-30T17:48:54.120Z] [unzip] else mkdir: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\client\assets\provider-icons
+[debug] [2024-11-30T17:48:54.120Z] [unzip] deflating: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\client\assets\provider-icons\auth_service_email.svg
+[debug] [2024-11-30T17:48:54.121Z] [unzip] Entry: client/assets/provider-icons/auth_service_google.svg (compressed_size=409 bytes, uncompressed_size=720 bytes)
+[debug] [2024-11-30T17:48:54.121Z] [unzip] Processing entry: client\assets\provider-icons\auth_service_google.svg
+[debug] [2024-11-30T17:48:54.121Z] [unzip] else mkdir: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\client\assets\provider-icons
+[debug] [2024-11-30T17:48:54.122Z] [unzip] deflating: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\client\assets\provider-icons\auth_service_google.svg
+[debug] [2024-11-30T17:48:54.123Z] [unzip] Entry: client/assets/provider-icons/auth_service_oidc.svg (compressed_size=414 bytes, uncompressed_size=858 bytes)
+[debug] [2024-11-30T17:48:54.123Z] [unzip] Processing entry: client\assets\provider-icons\auth_service_oidc.svg
+[debug] [2024-11-30T17:48:54.123Z] [unzip] else mkdir: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\client\assets\provider-icons
+[debug] [2024-11-30T17:48:54.123Z] [unzip] deflating: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\client\assets\provider-icons\auth_service_oidc.svg
+[debug] [2024-11-30T17:48:54.124Z] [unzip] Entry: client/browserconfig.xml (compressed_size=491 bytes, uncompressed_size=822 bytes)
+[debug] [2024-11-30T17:48:54.124Z] [unzip] Processing entry: client\browserconfig.xml
+[debug] [2024-11-30T17:48:54.124Z] [unzip] else mkdir: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\client
+[debug] [2024-11-30T17:48:54.124Z] [unzip] deflating: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\client\browserconfig.xml
+[debug] [2024-11-30T17:48:54.125Z] [unzip] Entry: client/favicon-32x32.png (compressed_size=475 bytes, uncompressed_size=475 bytes)
+[debug] [2024-11-30T17:48:54.125Z] [unzip] Processing entry: client\favicon-32x32.png
+[debug] [2024-11-30T17:48:54.126Z] [unzip] else mkdir: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\client
+[debug] [2024-11-30T17:48:54.126Z] [unzip] Writing file: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\client\favicon-32x32.png
+[debug] [2024-11-30T17:48:54.127Z] [unzip] Entry: server/ (compressed_size=0 bytes, uncompressed_size=0 bytes)
+[debug] [2024-11-30T17:48:54.127Z] [unzip] Processing entry: server\
+[debug] [2024-11-30T17:48:54.127Z] [unzip] mkdir: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\server\
+[debug] [2024-11-30T17:48:54.127Z] [unzip] Entry: server/server.mjs.map (compressed_size=296496 bytes, uncompressed_size=1355667 bytes)
+[debug] [2024-11-30T17:48:54.127Z] [unzip] Processing entry: server\server.mjs.map
+[debug] [2024-11-30T17:48:54.127Z] [unzip] else mkdir: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\server
+[debug] [2024-11-30T17:48:54.127Z] [unzip] deflating: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\server\server.mjs.map
+[debug] [2024-11-30T17:48:54.134Z] [unzip] Entry: server/server.mjs (compressed_size=315701 bytes, uncompressed_size=1172682 bytes)
+[debug] [2024-11-30T17:48:54.134Z] [unzip] Processing entry: server\server.mjs
+[debug] [2024-11-30T17:48:54.134Z] [unzip] else mkdir: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\server
+[debug] [2024-11-30T17:48:54.134Z] [unzip] deflating: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\server\server.mjs
+[debug] [2024-11-30T17:48:54.140Z] [unzip] Entry: server/assets/ (compressed_size=0 bytes, uncompressed_size=0 bytes)
+[debug] [2024-11-30T17:48:54.140Z] [unzip] Processing entry: server\assets\
+[debug] [2024-11-30T17:48:54.140Z] [unzip] mkdir: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\server\assets\
+[debug] [2024-11-30T17:48:54.140Z] [unzip] Entry: server/assets/multipart-parser-DGCUZdXu.mjs.map (compressed_size=4791 bytes, uncompressed_size=17918 bytes)
+[debug] [2024-11-30T17:48:54.141Z] [unzip] Processing entry: server\assets\multipart-parser-DGCUZdXu.mjs.map
+[debug] [2024-11-30T17:48:54.141Z] [unzip] else mkdir: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\server\assets
+[debug] [2024-11-30T17:48:54.141Z] [unzip] deflating: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\server\assets\multipart-parser-DGCUZdXu.mjs.map
+[debug] [2024-11-30T17:48:54.142Z] [unzip] Entry: server/assets/multipart-parser-DGCUZdXu.mjs (compressed_size=2621 bytes, uncompressed_size=10390 bytes)
+[debug] [2024-11-30T17:48:54.142Z] [unzip] Processing entry: server\assets\multipart-parser-DGCUZdXu.mjs
+[debug] [2024-11-30T17:48:54.142Z] [unzip] else mkdir: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\server\assets
+[debug] [2024-11-30T17:48:54.142Z] [unzip] deflating: C:\Users\alexa\.cache\firebase\emulators\ui-v1.14.0\server\assets\multipart-parser-DGCUZdXu.mjs
+[debug] [2024-11-30T17:48:54.150Z] Could not find VSCode notification endpoint: FetchError: request to http://localhost:40001/vscode/notify failed, reason: . If you are not running the Firebase Data Connect VSCode extension, this is expected and not an issue.
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+│ i  View Emulator UI at http://127.0.0.1:4000/               │
+└─────────────────────────────────────────────────────────────┘
+
+┌──────────┬────────────────┬───────────────────────────────┐
+│ Emulator │ Host:Port      │ View in Emulator UI           │
+├──────────┼────────────────┼───────────────────────────────┤
+│ Hosting  │ 127.0.0.1:5000 │ n/a                           │
+├──────────┼────────────────┼───────────────────────────────┤
+│ Storage  │ 127.0.0.1:9199 │ http://127.0.0.1:4000/storage │
+└──────────┴────────────────┴───────────────────────────────┘
+  Emulator Hub running at 127.0.0.1:4400
+  Other reserved ports: 4500
+
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 

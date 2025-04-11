@@ -1,0 +1,57 @@
+<div class="login">
+    <body>
+        <div class="page">
+            <form>
+                <div class="formLogin" *ngIf="!gatilhoAtualiza">
+                    <h1>Adiconar Banca</h1>
+                    <label for="nome_banca">Nome da Banca:</label>
+                    <input type="text" placeholder="Nome da Banca" autofocus="true" id="nome_banca"
+                        [(ngModel)]="newBanca.nome_banca" name="nome_banca" required />
+                    <label for="data_criacao">Data de Criação:</label>
+                    <input type="date" id="data_criacao" [(ngModel)]="newBanca.data_criacao" name="data_criacao"
+                        type="date" required />
+                    <label for="img_logo">Logo</label>
+                    <input id="img_logo" [(ngModel)]="newBanca.img_logo" name="img_logo" type="file" required />
+                    <input (click)="addBanca()" type="submit" value="Adicionar Banca" class="btn" />
+                    <h2>
+                        Listagem de Bancas
+                    </h2>
+                    <div>
+                        <div *ngFor="let banca of bancas">
+                            <div style="height: 40px;">
+                                <strong>
+                                    <p style="padding-right: 5px;"> {{ banca.nome_banca }}</p>
+                                </strong>
+                                <p>{{ banca.data_criacao | date : 'dd/MM/yyyy' }}</p>
+                            </div>
+                            <button style="margin-right: 10px !important;" class="btn"
+                                (click)="deleteBanca(banca.id)">Deletar</button>
+                            <button (click)="gatilhoAtualizacao(banca.id)" class="btn">Editar</button>
+
+                        </div>
+                        <br>
+                        <a routerLink="/main" routerLinkActive="active">Voltar para a página principal</a>
+                    </div>
+                </div>
+                <br>
+                <div class="formLogin" *ngIf="gatilhoAtualiza">
+                    <h1>Editar Banca</h1>
+                    <label for="nome_banca_edit">Nome da Banca:</label>
+                    <input id="nome_banca_edit" type="text" [(ngModel)]="newBanca.nome_banca" name="nome_banca_edit" required />
+
+                    <label for="data_criacao_edit">Data de Criação:</label>
+                    <input id="data_criacao_edit" type="date" [(ngModel)]="newBanca.data_criacao" name="data_criacao_edit" required />
+
+                    <label for="img_logo_edit">Logo</label>
+                    <input  id="img_logo_edit" type="file" [(ngModel)]="newBanca.img_logo" name="img_logo_edit" />
+
+                    <button (click)="updateBanca(this.idAtual)" class="btn">Atualizar Banca</button>
+                    <button (click)="gatilhoAtualizacao()" type="button" class="btn">Voltar</button>
+                    <a routerLink="/main" routerLinkActive="active">Voltar para a página principal</a>
+
+                </div>
+            </form>
+        </div>
+
+    </body>
+</div>
