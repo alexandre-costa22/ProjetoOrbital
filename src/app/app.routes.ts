@@ -1,11 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { MainPageComponent } from './modules/main-page/main-page.component';
+import { MainPageComponent } from './_components/main-page/main-page.component';
 import { redirectUnauthorizedTo, redirectLoggedInTo, canActivate } from '@angular/fire/auth-guard';
-import { LoginComponent } from './modules/login/login.component';
-import { RegisterComponent } from './modules/register/register.component';
-import { RegisterBancaComponent } from './modules/register-banca/register-banca.component';
-import { RegisterEditaisComponent } from './modules/register-editais/register-editais.component';
+import { LoginComponent } from './_components/login/login.component';
+import { RegisterComponent } from './_components/register/register.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 const redirectLoggedInToMain = () => redirectLoggedInTo(['main']);
@@ -22,19 +20,8 @@ const routes: Routes = [
     ...canActivate(redirectLoggedInToMain) 
   },
   { 
-    path: 'register-banca', 
-    component: RegisterBancaComponent, 
-    ...canActivate(redirectUnauthorizedToLogin) 
-  },
-  { 
-    path: 'register-editais', 
-    component: RegisterEditaisComponent, 
-    ...canActivate(redirectUnauthorizedToLogin) 
-  },
-  { 
     path: 'main', 
     component: MainPageComponent, 
-    ...canActivate(redirectUnauthorizedToLogin) 
   },
   { 
     path: '', 

@@ -1,25 +1,3 @@
-<div class="container-fluid">
-  <div class="header d-flex justify-content-end align-items-center bg-dark p-2">
-    <div class="icones">
-      <a *ngIf="isAuth" class="vejaMais" type="button" (click)="realizarLogout()">LogOut</a>
-      <span>Contatos: </span>
-      <a href="https://www.facebook.com" target="_blank" class="text-white mx-1">
-        <img src="assets/icons/facebookIcon.png" alt="Facebook" class="icon-img">
-      </a>
-      <a href="https://www.instagram.com" target="_blank" class="text-white mx-1">
-        <img src="assets/icons/instagramIcon.png" alt="Instagram" class="icon-img">
-      </a>
-      <a href="https://wa.me/seunumerodetelefone" target="_blank" class="text-white mx-1">
-        <img src="assets/icons/whatsappIcon.png" alt="WhatsApp" class="icon-img">
-      </a>
-    </div>
-  </div>
-</div>
-
-<div class="titulo text-center">
-  <h1>SENAC CRAWLERS</h1>
-</div>
-
-<div>
-  <router-outlet></router-outlet>
-</div>
+<app-header></app-header>
+<router-outlet></router-outlet>
+<app-footer></app-footer>

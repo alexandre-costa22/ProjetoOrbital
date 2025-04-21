@@ -37,11 +37,12 @@ a {
     font-size: 28px; 
 }
 
+
 .titulo {
     height: 51px;
     display: grid;
     align-items: center;
-    text-align: center;
+    text-align: left;
     border: solid #000000 1px;
 }
 
@@ -51,7 +52,9 @@ a {
     border-bottom: solid black 1PX ;
 }
 
-
+.row.grow {
+    flex-grow: 1;
+  }
 
 .vejaMais{
     background-color: #2A8168 !important;
