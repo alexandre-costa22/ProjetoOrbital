@@ -1,9 +1,6 @@
 import { Component } from '@angular/core';
-import { Edital } from '../../class/itemEditais';
-import { EditaisService } from '../../services/editais.service';
-import { firstValueFrom } from 'rxjs';
-import { BancasService } from '../../services/bancas.service';
-import { Banca } from '../../class/itemBancas';
+import { ExpeditionService } from '../../services/expeditions.service';
+import { Expeditions } from '../../models/expeditions.model';
 
 @Component({
   selector: 'app-main-page',
@@ -11,16 +8,22 @@ import { Banca } from '../../class/itemBancas';
   styleUrls: ['./main-page.component.css']
 })
 export class MainPageComponent {
-  bancas: any[] = [];
-  selectedBanca: string = '';
-  filtrarResultados: string = '';  
-  editais: Edital[] = [];
-  itemsPerPage = 10;
-  currentPage = 1;
-  loading: boolean = false;
+  expeditions: Expeditions[] = [];
+  activeExpeditions: Expeditions[] = [];
 
-  constructor() { }
+  constructor(private expeditionService: ExpeditionService) { }
 
   ngOnInit() {
+    this.expeditionService.getExpeditions().subscribe(data => {
+      this.expeditions = data;
+      for (let i = 0; i < this.expeditions.length; i++) {
+        if (this.expeditions[i].end == null) {
+          this.activeExpeditions.push(this.expeditions[i]);
+        }
+      }
+    });
   }
 }
+  
+  
+  

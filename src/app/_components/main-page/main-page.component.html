@@ -1,0 +1,28 @@
+<br>
+<br>
+<br>
+<div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
+    <div class="col-lg-6 px-0">
+        <h1 class="display-4 fst-italic">ORBITAL</h1>
+        <p class="lead my-3">Aqui você encontra tudo sobre o universo espacial, a partir de uma perspectiva diferente
+        </p>
+    </div>
+</div>
+<div style="display: flex; justify-content: center;">
+    <h1 class="display-4 fst-italic">MISSÕES ATIVAS</h1>
+</div>
+<br>
+<div style="display: flex; justify-content: center;">
+
+    <carousel [interval]="3000" [noPause]="false" [showIndicators]="true">
+        <div *ngFor="let expedicao of activeExpeditions">
+            <slide>
+                <img src="https://placehold.co/800x400?text=Slide+1" style="height: 300px; margin: auto;" alt="Slide 1"
+                    class="">
+                <div class="slide-text">
+                    <h3>{{expedicao.name}}</h3>
+                    <h4>{{expedicao.start | date:'dd/MM/yyyy'}}</h4>
+                </div>
+            </slide>
+        </div>
+    </carousel>

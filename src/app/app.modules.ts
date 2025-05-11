@@ -28,6 +28,8 @@ import { PaginatePipe } from './pipe/paginate.pipe';
 import { MDBBootstrapModule } from 'angular-bootstrap-md'; 
 import { FooterComponent } from './_components/footer/footer.component';
 import { HeaderComponent } from './_components/header/header.component';
+import { provideHttpClient } from '@angular/common/http';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
 
 
 
@@ -62,9 +64,11 @@ import { HeaderComponent } from './_components/header/header.component';
     MatIconModule,
     MatProgressBarModule,
     MatProgressSpinnerModule,
+    CarouselModule.forRoot()
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA], 
   providers: [
+    provideHttpClient(),
     provideFirebaseApp(() => initializeApp(environment.firebase)), 
     provideFirestore(() => getFirestore()),
     provideAuth(() => getAuth()),
