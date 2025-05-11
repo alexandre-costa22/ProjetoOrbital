@@ -23,13 +23,14 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { environment } from '../environments/environments';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegisterComponent } from './_components/register/register.component';
-import { FilterEditaisPipe } from './pipe/filter.pipe';
 import { PaginatePipe } from './pipe/paginate.pipe';
 import { MDBBootstrapModule } from 'angular-bootstrap-md'; 
 import { FooterComponent } from './_components/footer/footer.component';
 import { HeaderComponent } from './_components/header/header.component';
 import { provideHttpClient } from '@angular/common/http';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { TranslateMissionPipe } from './pipe/translate-mission.pipe';
+import { MissionsComponent } from './_components/missions/missions.component';
 
 
 
@@ -39,10 +40,11 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
     LoginComponent,
     MainPageComponent,
     RegisterComponent,
-    FilterEditaisPipe,
     PaginatePipe,
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    TranslateMissionPipe,
+    MissionsComponent
   ],
   imports: [
     MDBBootstrapModule.forRoot(),
