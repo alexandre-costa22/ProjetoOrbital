@@ -23,7 +23,6 @@
     "@angular/router": "^18.2.6",
     "@google/generative-ai": "^0.24.1",
     "@ng-select/ng-select": "^13.9.0",
-    "angular-bootstrap-md": "^15.0.0",
     "bootstrap": "^5.3.6",
     "firebase": "^11.0.2",
     "ngx-bootstrap": "^19.0.2",
