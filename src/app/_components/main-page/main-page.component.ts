@@ -6,9 +6,10 @@ import { GoogleGenerativeAI } from '@google/generative-ai';
 declare var bootstrap: any; // isso expõe a instância JS do Bootstrap
 
 @Component({
-  selector: 'app-main-page',
-  templateUrl: './main-page.component.html',
-  styleUrls: ['./main-page.component.css']
+    selector: 'app-main-page',
+    templateUrl: './main-page.component.html',
+    styleUrls: ['./main-page.component.css'],
+    standalone: false
 })
 export class MainPageComponent implements AfterViewInit {
   expeditions: Expeditions[] = [];
