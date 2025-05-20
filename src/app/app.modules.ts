@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app.routes';
 import { LoginComponent } from './_components/login/login.component';
 import { MainPageComponent } from './_components/main-page/main-page.component';
-import { CommonModule, NgIf } from '@angular/common';
+import { CommonModule, NgFor, NgForOf, NgIf } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { MatSelectModule } from '@angular/material/select';
@@ -24,7 +24,6 @@ import { environment } from '../environments/environments';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegisterComponent } from './_components/register/register.component';
 import { PaginatePipe } from './pipe/paginate.pipe';
-import { MDBBootstrapModule } from 'angular-bootstrap-md'; 
 import { FooterComponent } from './_components/footer/footer.component';
 import { HeaderComponent } from './_components/header/header.component';
 import { provideHttpClient } from '@angular/common/http';
@@ -47,15 +46,15 @@ import { MissionsComponent } from './_components/missions/missions.component';
     MissionsComponent
   ],
   imports: [
-    MDBBootstrapModule.forRoot(),
     BrowserAnimationsModule,
     BrowserModule,
-    FormsModule,
     AppRoutingModule,
     CommonModule,
     RouterModule,
     FormsModule,
     NgSelectModule,
+    NgForOf,
+    NgFor,
     MatSelectModule,
     MatFormFieldModule,
     MatInputModule,
