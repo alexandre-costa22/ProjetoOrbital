@@ -1,28 +1,72 @@
 <br>
 <br>
 <br>
-<div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
+<div class="p-5 mb-4 rounded shadow bg-body-secondary">
     <div class="col-lg-6 px-0">
-        <h1 class="display-4 fst-italic">ORBITAL</h1>
-        <p class="lead my-3">Aqui você encontra tudo sobre o universo espacial, a partir de uma perspectiva diferente
-        </p>
+      <h1 class="display-4 fst-italic">ORBITAL</h1>
+      <p class="lead my-3">Aqui você encontra tudo sobre o universo espacial, a partir de uma perspectiva diferente.</p>
     </div>
-</div>
-<div style="display: flex; justify-content: center;">
-    <h1 class="display-4 fst-italic">MISSÕES ATIVAS</h1>
-</div>
-<br>
-<div style="display: flex; justify-content: center;">
-
-    <carousel [interval]="3000" [noPause]="false" [showIndicators]="true">
-        <div *ngFor="let expedicao of activeExpeditions">
-            <slide>
-                <img src="https://placehold.co/800x400?text=Slide+1" style="height: 300px; margin: auto;" alt="Slide 1"
-                    class="">
-                <div class="slide-text">
-                    <h3>{{expedicao.name}}</h3>
-                    <h4>{{expedicao.start | date:'dd/MM/yyyy'}}</h4>
-                </div>
-            </slide>
+  </div>
+  <div class="bg-dark py-5">
+    <div class="container text-center mb-4">
+      <h1 class="display-5 fst-italic text-white">MISSÕES ATIVAS</h1>
+    </div>
+  
+    <div class="container d-flex justify-content-center">
+      <div class="w-100" style="max-width: 900px;">
+        <div id="carouselExampleCaptions" class="carousel slide shadow rounded overflow-hidden" data-bs-ride="carousel">
+          <div class="carousel-indicators">
+            <button *ngFor="let expedicao of activeExpeditions; let i = index" type="button"
+                    data-bs-target="#carouselExampleCaptions" [attr.data-bs-slide-to]="i"
+                    [class.active]="i === 0" [attr.aria-current]="i === 0 ? 'true' : null"
+                    [attr.aria-label]="expedicao.name"></button>
+          </div>
+  
+          <div class="carousel-inner">
+            <div *ngFor="let expedicao of activeExpeditions; let i = index"
+                 class="carousel-item" [class.active]="i === 0">
+              <img [src]="getImage(expedicao.name)" class="d-block w-100"
+                   style="height: 70vh; object-fit: cover;" [alt]="expedicao.name">
+              <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-3">
+                <h5 class="text-white">{{ expedicao.name | translateMission }} </h5>
+                <p class="text-white">{{ expedicao.start | date:'dd/MM/yyyy' }}</p>
+                <p><a class="btn btn-outline-light" [routerLink]="['/item', expedicao.name]">Veja mais »</a></p>
+              </div>
+            </div>
+          </div>
+  
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Próximo</span>
+          </button>
         </div>
-    </carousel>
+      </div>
+    </div>
+  </div>
+  <div class="bg-light py-5">
+    <div class="container text-center mb-4">
+      <h1 class="display-5 fst-italic">MISSÕES PASSADAS</h1>
+    </div>
+    <div class="container">
+      <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-5" style="display: flex; justify-content: center;">
+        <div class="col text-center bg-dark text-light rounded shadow p-4"
+        *ngFor="let expedicao of lastExpeditions; let i = index" style="margin-right: 10px	;">
+          <img [src]="getImage(expedicao.name)" class="rounded-circle mb-3 shadow"
+               style="width: 140px; height: 140px; object-fit: cover;" />
+          <h4 class="fw-bold">{{ expedicao.name | translateMission }}</h4>
+          <p>{{ expedicao.start | date:'dd/MM/yyyy' }}</p>
+          <p>{{ expedicao.end | date:'dd/MM/yyyy' }}</p>
+          <p><a class="btn btn-outline-light" [routerLink]="['/item', expedicao.name]">Veja mais »</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+<br>
+<br>
+<br>
+<br>
+<br>
