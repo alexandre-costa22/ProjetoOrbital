@@ -30,6 +30,7 @@ import { provideHttpClient } from '@angular/common/http';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { TranslateMissionPipe } from './pipe/translate-mission.pipe';
 import { MissionsComponent } from './_components/missions/missions.component';
+import { ItemDescriptionComponent } from './_components/item-description/item-description.component';
 
 
 
@@ -43,7 +44,8 @@ import { MissionsComponent } from './_components/missions/missions.component';
     FooterComponent,
     HeaderComponent,
     TranslateMissionPipe,
-    MissionsComponent
+    MissionsComponent,
+    ItemDescriptionComponent
   ],
   imports: [
     BrowserAnimationsModule,

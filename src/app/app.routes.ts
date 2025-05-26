@@ -5,6 +5,7 @@ import { redirectUnauthorizedTo, redirectLoggedInTo, canActivate } from '@angula
 import { LoginComponent } from './_components/login/login.component';
 import { RegisterComponent } from './_components/register/register.component';
 import { MissionsComponent } from './_components/missions/missions.component';
+import { ItemDescriptionComponent } from './_components/item-description/item-description.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 const redirectLoggedInToMain = () => redirectLoggedInTo(['main']);
@@ -24,6 +25,10 @@ const routes: Routes = [
     path: 'missions', 
     component: MissionsComponent, 
     ...canActivate(redirectUnauthorizedToLogin)
+  },
+  { 
+    path: 'item/:name', 
+    component: ItemDescriptionComponent
   },
   { 
     path: 'main', 

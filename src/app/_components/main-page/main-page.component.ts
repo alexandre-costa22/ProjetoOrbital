@@ -1,8 +1,8 @@
 import { Component, AfterViewInit  } from '@angular/core';
 import { ExpeditionService } from '../../services/expeditions.service';
 import { Expeditions } from '../../models/expeditions.model';
-import { OpenaiService } from '../../services/ask.service';
-import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
+
 
 declare var bootstrap: any; // isso expõe a instância JS do Bootstrap
 
@@ -19,16 +19,15 @@ export class MainPageComponent implements AfterViewInit {
   lastExpeditions: Expeditions[] = [];
   crewImages: string[] = [];
   expeditionImages: { [name: string]: string } = {};
+  gptResponse: string | null = null;
+  item: string = "";
 
 
-  constructor(private expeditionService: ExpeditionService,
-    private openaiService: OpenaiService,
-    private http: HttpClient
-  ) { 
-  }
+
+  constructor(private expeditionService: ExpeditionService
+  ) {  }
 
 ngOnInit() {
-  this.buscaTeste();
   this.expeditionService.getExpeditions().subscribe(data => {
     this.expeditions = data;
     for (let i = 0; i < this.expeditions.length; i++) {
@@ -46,20 +45,6 @@ ngOnInit() {
     });
   });
 }
-
-buscaTeste() {
-  const pergunta = {
-    question: 'Qual a capital da França?'
-  };
-
-  this.http.post('http://localhost:3333/ask', pergunta).subscribe({
-    next: (res) => {
-      console.log('Resposta:', res);
-    },
-    error: (err) => {
-      console.error('Erro na requisição:', err);
-    }
-  });}
 
 ngAfterViewInit(): void {
   setTimeout(() => {

@@ -30,7 +30,7 @@
               <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-3">
                 <h5 class="text-white">{{ expedicao.name | translateMission }} </h5>
                 <p class="text-white">{{ expedicao.start | date:'dd/MM/yyyy' }}</p>
-                <p><a class="btn btn-outline-light" href="#">Veja mais »</a></p>
+                <p><a class="btn btn-outline-light" [routerLink]="['/item', expedicao.name]">Veja mais »</a></p>
               </div>
             </div>
           </div>
@@ -60,7 +60,7 @@
           <h4 class="fw-bold">{{ expedicao.name | translateMission }}</h4>
           <p>{{ expedicao.start | date:'dd/MM/yyyy' }}</p>
           <p>{{ expedicao.end | date:'dd/MM/yyyy' }}</p>
-          <p><a class="btn btn-outline-light" href="#">Veja mais »</a></p>
+          <p><a class="btn btn-outline-light" [routerLink]="['/item', expedicao.name]">Veja mais »</a></p>
         </div>
       </div>
     </div>
