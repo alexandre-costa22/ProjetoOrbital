@@ -1,26 +1,64 @@
-import { Component } from '@angular/core';
-import { Edital } from '../../class/itemEditais';
-import { EditaisService } from '../../services/editais.service';
-import { firstValueFrom } from 'rxjs';
-import { BancasService } from '../../services/bancas.service';
-import { Banca } from '../../class/itemBancas';
+import { Component, AfterViewInit  } from '@angular/core';
+import { ExpeditionService } from '../../services/expeditions.service';
+import { Expeditions } from '../../models/expeditions.model';
+import { ActivatedRoute } from '@angular/router';
+
+
+declare var bootstrap: any; // isso expõe a instância JS do Bootstrap
 
 @Component({
-  selector: 'app-main-page',
-  templateUrl: './main-page.component.html',
-  styleUrls: ['./main-page.component.css']
+    selector: 'app-main-page',
+    templateUrl: './main-page.component.html',
+    styleUrls: ['./main-page.component.css'],
+    standalone: false
+
 })
-export class MainPageComponent {
-  bancas: any[] = [];
-  selectedBanca: string = '';
-  filtrarResultados: string = '';  
-  editais: Edital[] = [];
-  itemsPerPage = 10;
-  currentPage = 1;
-  loading: boolean = false;
+export class MainPageComponent implements AfterViewInit {
+  expeditions: Expeditions[] = [];
+  activeExpeditions: Expeditions[] = [];
+  lastExpeditions: Expeditions[] = [];
+  crewImages: string[] = [];
+  expeditionImages: { [name: string]: string } = {};
+  gptResponse: string | null = null;
+  item: string = "";
 
-  constructor() { }
 
-  ngOnInit() {
-  }
+
+  constructor(private expeditionService: ExpeditionService
+  ) {  }
+
+ngOnInit() {
+  this.expeditionService.getExpeditions().subscribe(data => {
+    this.expeditions = data;
+    for (let i = 0; i < this.expeditions.length; i++) {
+      const exp = this.expeditions[i];
+      if (exp.end == null) {
+        this.activeExpeditions.push(exp);
+      } else {
+        this.lastExpeditions.push(exp);
+      }
+    }
+    this.expeditions.forEach(expedition => {
+      this.expeditionService.getCrewPhoto(expedition.name).subscribe(url => {
+        this.expeditionImages[expedition.name] = url || 'assets/default.jpg';
+      });
+    });
+  });
 }
+
+ngAfterViewInit(): void {
+  setTimeout(() => {
+    const myCarouselElement = document.querySelector('#carouselExampleCaptions');
+    if (myCarouselElement) {
+      new bootstrap.Carousel(myCarouselElement);
+    }
+  }, 5000);
+}
+
+getImage(expedition: string): string {
+  return this.expeditionImages[expedition];
+}
+}
+  
+  
+  

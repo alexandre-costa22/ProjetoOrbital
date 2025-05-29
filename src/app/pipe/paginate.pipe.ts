@@ -1,8 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'paginate',
-  pure: true
+    name: 'paginate',
+    pure: true,
+    standalone: false
 })
 export class PaginatePipe implements PipeTransform {
   transform(items: any[], currentPage: number, itemsPerPage: number): any[] {
