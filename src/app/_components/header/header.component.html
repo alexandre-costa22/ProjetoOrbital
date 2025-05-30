@@ -1,0 +1,33 @@
+<div class="fixed-top bg-black">
+  <header class="container d-flex align-items-center justify-content-between py-2">
+    <div class="d-flex align-items-center gap-3">
+      <div class="dropdown">
+        <button class="btn btn-black text-white fw-bold dropdown-toggle" type="button" data-bs-toggle="dropdown">
+          Explorar
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" routerLink="/missions">Missões</a></li>
+          <li><a class="dropdown-item" routerLink="/launches">Lançamentos</a></li>
+          <li><a class="dropdown-item" routerLink="/astronauts">Astronautas</a></li>
+        </ul>
+      </div>
+      <input type="text" class="form-control bg-black border-secondary text-white" placeholder="Buscar">
+    </div>
+
+    <a href="/" class="d-flex align-items-center">
+      <img src="assets/icons/orbitalIcon.jpeg" width="50" height="50" class="rounded-circle" style="object-fit: cover;" alt="Logo Orbital">
+    </a>
+
+    <ul class="nav d-flex align-items-center gap-4">
+      <li><a routerLink="/missions" class="text-white fw-semibold nav-link">Missões</a></li>
+      <li><a routerLink="/launches" class="text-white fw-semibold nav-link">Lançamentos</a></li>
+      <li><a routerLink="/astronauts" class="text-white fw-semibold nav-link">Astronautas</a></li>
+      <li>
+        <a routerLink="/missions" class="text-white fw-semibold nav-link d-flex align-items-center gap-1">
+          Orbital+ <span class="badge bg-danger text-white small">LIVE</span>
+        </a>
+      </li>
+      <li><a *ngIf="isAuth" type="button" (click)="logOut()" class="text-white fw-semibold nav-link">Sair</a></li>
+    </ul>
+  </header>
+</div>

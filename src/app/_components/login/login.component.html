@@ -1,0 +1,38 @@
+<br>
+<br>
+<div class="container" style="background-color: #121212;">
+  <div class="left-side">
+    <img src="assets/images/auth/moonLandingLoginPage.jpeg" alt="Login Image" />
+  </div>
+
+  <div class="right-side">
+    <h1>Acesse sua conta</h1>
+    <form class="formLogin" (submit)="realizarLoginComEmailSenha(); $event.preventDefault()">
+      <label for="email">E-mail</label>
+      <input
+        autocomplete="on"
+        id="email"
+        name="email"
+        [(ngModel)]="usuario.email"
+        type="email"
+        placeholder="Digite seu e-mail"
+        autofocus
+      />
+
+      <label for="password">Senha</label>
+      <input
+        id="password"
+        name="password"
+        [(ngModel)]="usuario.senha"
+        type="password"
+        placeholder="Digite sua senha"
+      />
+
+      <button type="submit" class="btn-login" [disabled]="carregando">Entrar</button>
+
+      <a routerLink="/register" class="register-link">Ou crie uma conta</a>
+
+      <div *ngIf="erroLogin" class="error-message">{{ mensagemErro }}</div>
+    </form>
+  </div>
+</div>
