@@ -1,0 +1,14 @@
+.btn-black {
+  background-color: black;
+  border: 1px solid #444;
+}
+
+.btn-black:hover {
+  background-color: #222;
+  color: white;
+}
+
+input::placeholder {
+  color: #aaa;
+}
+

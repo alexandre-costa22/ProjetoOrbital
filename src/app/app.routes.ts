@@ -6,41 +6,53 @@ import { LoginComponent } from './_components/login/login.component';
 import { RegisterComponent } from './_components/register/register.component';
 import { MissionsComponent } from './_components/missions/missions.component';
 import { ItemDescriptionComponent } from './_components/item-description/item-description.component';
+import { LaunchesComponent } from './_components/launches/launches.component';
+import { AstronautsComponent } from './_components/astronauts/astronauts.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 const redirectLoggedInToMain = () => redirectLoggedInTo(['main']);
 
 const routes: Routes = [
-  { 
-    path: 'login', 
-    component: LoginComponent, 
-    ...canActivate(redirectLoggedInToMain) 
+  {
+    path: 'login',
+    component: LoginComponent,
+    ...canActivate(redirectLoggedInToMain)
   },
-  { 
-    path: 'register', 
-    component: RegisterComponent, 
-    ...canActivate(redirectLoggedInToMain) 
+  {
+    path: 'register',
+    component: RegisterComponent,
+    ...canActivate(redirectLoggedInToMain)
   },
-  { 
-    path: 'missions', 
-    component: MissionsComponent, 
+  {
+    path: 'missions',
+    component: MissionsComponent,
     ...canActivate(redirectUnauthorizedToLogin)
   },
-  { 
-    path: 'item/:name', 
+  {
+    path: 'launches',
+    component: LaunchesComponent,
+    ...canActivate(redirectUnauthorizedToLogin)
+  },
+    {
+    path: 'astronauts',
+    component: AstronautsComponent,
+    ...canActivate(redirectUnauthorizedToLogin)
+  },
+  {
+    path: 'item/:name',
     component: ItemDescriptionComponent
   },
-  { 
-    path: 'main', 
-    component: MainPageComponent, 
+  {
+    path: 'main',
+    component: MainPageComponent,
   },
-  { 
-    path: '', 
-    redirectTo: 'main', 
-    pathMatch: 'full' 
+  {
+    path: '',
+    redirectTo: 'main',
+    pathMatch: 'full'
   },
-  { 
-    path: '**', 
+  {
+    path: '**',
     redirectTo: 'main'
   }
 ];
