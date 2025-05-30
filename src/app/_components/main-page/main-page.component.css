@@ -1,0 +1,73 @@
+header .p-5 {
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+header h1 {
+  color: #000;
+  margin-top: 40px;
+}
+
+header p {
+  color: #343a40;
+}
+
+
+main .bg-dark {
+  background-color: #000 !important;
+}
+
+main .bg-dark h1 {
+  color: #fff;
+}
+
+.carousel-caption h5,
+.carousel-caption p {
+  color: #fff;
+}
+
+.carousel-caption .btn-outline-light {
+  border-color: #bbb;
+  color: #bbb;
+}
+
+.carousel-caption .btn-outline-light:hover {
+  background-color: #222;
+  color: #fff;
+}
+
+main .bg-light {
+  background-color: #f8f9fa !important;
+  color: #212529;
+}
+
+main .bg-light h1 {
+  color: #000;
+}
+
+.bg-dark.text-light {
+  background-color: #222 !important;
+  color: #eee !important;
+}
+
+.bg-dark.text-light h4 {
+  color: #fff;
+}
+
+.bg-dark.text-light p {
+  color: #ccc;
+}
+
+.bg-dark.text-light .btn-outline-light {
+  border-color: #bbb;
+  color: #bbb;
+}
+
+.bg-dark.text-light .btn-outline-light:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+br {
+  display: none;
+}
