@@ -27,6 +27,7 @@
           Orbital+ <span class="badge bg-danger text-white small">LIVE</span>
         </a>
       </li>
+      <li><a *ngIf="isAuth" type="button" (click)="logOut()" class="text-white fw-semibold nav-link">Sair</a></li>
     </ul>
   </header>
 </div>
