@@ -1,6 +1,7 @@
 header .p-5 {
   background-color: #f8f9fa;
   color: #212529;
+  text-align: center;
 }
 
 header h1 {
@@ -12,62 +13,58 @@ header p {
   color: #343a40;
 }
 
-
-main .bg-dark {
-  background-color: #000 !important;
+.btn-space-blue {
+  background-color: #0b1f33;
+  color: white;
+  border: none;
+  transition: background-color 0.3s ease;
 }
 
-main .bg-dark h1 {
+.btn-space-blue:hover {
+  background-color: #092033;
   color: #fff;
 }
 
-.carousel-caption h5,
-.carousel-caption p {
-  color: #fff;
+
+
+.mission-section {
+  background-color: #0e0e11;
+  color: #dcdcdc;
+  padding: 5rem 1rem;
 }
 
-.carousel-caption .btn-outline-light {
-  border-color: #bbb;
-  color: #bbb;
+.mission-section h2 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #ffffff;
 }
 
-.carousel-caption .btn-outline-light:hover {
-  background-color: #222;
-  color: #fff;
+.mission-section p.lead {
+  color: #bbbbbb;
+  font-size: 1.125rem;
 }
 
-main .bg-light {
-  background-color: #f8f9fa !important;
-  color: #212529;
+.mission-section .feature-box {
+  background-color: #1a1a1f;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-main .bg-light h1 {
-  color: #000;
+.mission-section .feature-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.1);
 }
 
-.bg-dark.text-light {
-  background-color: #222 !important;
-  color: #eee !important;
+.mission-section h4 {
+  color: #ffffff;
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
 }
 
-.bg-dark.text-light h4 {
-  color: #fff;
-}
-
-.bg-dark.text-light p {
-  color: #ccc;
-}
-
-.bg-dark.text-light .btn-outline-light {
-  border-color: #bbb;
-  color: #bbb;
-}
-
-.bg-dark.text-light .btn-outline-light:hover {
-  background-color: #000;
-  color: #fff;
-}
-
-br {
-  display: none;
+.mission-section .feature-box p {
+  color: #aaaaaa;
+  font-size: 0.95rem;
+  line-height: 1.6;
 }

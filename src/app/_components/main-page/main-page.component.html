@@ -1,73 +1,50 @@
 <header>
-  <div class="p-5 mb-4 rounded shadow bg-body-secondary">
-    <div class="col-lg-6 px-0">
-      <h1 class="display-4 fst-italic">ORBITAL</h1>
-      <p class="lead my-3">Aqui você encontra tudo sobre o universo espacial, a partir de uma perspectiva diferente.</p>
+  <div class="p-5 mb-4 rounded shadow bg-body-secondary text-center">
+    <div class="mx-auto" style="max-width: 700px;">
+      <h1 class="display-4 fw-bold text-dark">
+        Orbital
+        <span class="d-block fw-light text-muted">Missões espaciais, rastreadas com precisão.</span>
+      </h1>
+      <p class="lead my-3">
+        Acompanhe expedições ativas e explore o legado das missões passadas com uma visão clara e acessível do cosmos.
+      </p>
+      <a href="#" class="btn btn-space-blue btn-lg mt-3">Comece agora gratuitamente</a>
     </div>
   </div>
 </header>
 
-<main>
-  <div class="bg-dark py-5">
-    <div class="container text-center mb-4">
-      <h1 class="display-5 fst-italic text-white">MISSÕES ATIVAS</h1>
-    </div>
+<section class="mission-section py-5 bg-dark text-light">
+  <div class="container text-center">
+    <h2 class="fw-bold mb-4">Nós construímos algo verdadeiramente de OUTRO MUNDO.</h2>
+    <p class="lead mb-5 mx-auto" style="max-width: 700px;">
+      Com uma arquitetura moderna e escalável, o Orbital permite rastrear missões espaciais em tempo real, com precisão e velocidade. Desde os primeiros lançamentos até operações interplanetárias ativas — tudo em um só lugar.
+    </p>
 
-    <div class="container d-flex justify-content-center">
-      <div class="w-100" style="max-width: 900px;">
-        <div id="carouselExampleCaptions" class="carousel slide shadow rounded overflow-hidden" data-bs-ride="carousel">
-          <div class="carousel-indicators">
-            <button *ngFor="let expedicao of activeExpeditions; let i = index" type="button"
-                    data-bs-target="#carouselExampleCaptions" [attr.data-bs-slide-to]="i"
-                    [class.active]="i === 0" [attr.aria-current]="i === 0 ? 'true' : null"
-                    [attr.aria-label]="expedicao.name"></button>
-          </div>
-
-          <div class="carousel-inner">
-            <div *ngFor="let expedicao of activeExpeditions; let i = index"
-                 class="carousel-item" [class.active]="i === 0">
-              <img [src]="getImage(expedicao.name)" class="d-block w-100"
-                   style="height: 70vh; object-fit: cover;" [alt]="expedicao.name">
-              <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-3">
-                <h5 class="text-white">{{ expedicao.name | translateMission }} </h5>
-                <p class="text-white">{{ expedicao.start | date:'dd/MM/yyyy' }}</p>
-                <p><a class="btn btn-outline-light" [routerLink]="['/item', expedicao.name]">Veja mais »</a></p>
-              </div>
-            </div>
-          </div>
-
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Anterior</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Próximo</span>
-          </button>
-        </div>
+    <div class="row text-start g-5">
+      <div class="col-md-6 feature-box">
+        <h4 class="fw-bold">Rastreie Missões Instantaneamente</h4>
+        <p>
+          Acesse dados atualizados de missões espaciais com um clique. Veja horários de lançamento, estágios atuais, status em tempo real e muito mais — do passado, presente e futuro.
+        </p>
+      </div>
+      <div class="col-md-6 feature-box">
+        <h4 class="fw-bold">Telemetria em Tempo Real</h4>
+        <p>
+          Dados de telemetria diretamente de APIs especializadas. Veja a posição da espaçonave, velocidade orbital, status dos sistemas e trajetórias projetadas com atualizações ao vivo.
+        </p>
+      </div>
+      <div class="col-md-6 feature-box">
+        <h4 class="fw-bold">Busca e Filtros Avançados</h4>
+        <p>
+          Encontre missões por agência, veículo, destino ou período. Use filtros avançados e visualize detalhes em uma interface amigável e fluida.
+        </p>
+      </div>
+      <div class="col-md-6 feature-box">
+        <h4 class="fw-bold">Arquivo de Missões</h4>
+        <p>
+          Acesse um histórico completo de missões espaciais. Estude lançamentos marcantes, falhas e sucessos que moldaram a exploração espacial como a conhecemos.
+        </p>
       </div>
     </div>
   </div>
-
-  <div class="bg-light py-5">
-    <div class="container text-center mb-4">
-      <h1 class="display-5 fst-italic">MISSÕES PASSADAS</h1>
-    </div>
-    <div class="container">
-      <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-5" style="display: flex; justify-content: center;">
-        <div class="col text-center bg-dark text-light rounded shadow p-4"
-        *ngFor="let expedicao of lastExpeditions; let i = index" style="margin-right: 10px  ;">
-          <img [src]="getImage(expedicao.name)" class="rounded-circle mb-3 shadow"
-               style="width: 140px; height: 140px; object-fit: cover;" />
-          <h4 class="fw-bold">{{ expedicao.name | translateMission }}</h4>
-          <p>{{ expedicao.start | date:'dd/MM/yyyy' }}</p>
-          <p>{{ expedicao.end | date:'dd/MM/yyyy' }}</p>
-          <p><a class="btn btn-outline-light" [routerLink]="['/item', expedicao.name]">Veja mais »</a></p>
-        </div>
-      </div>
-    </div>
-  </div>
-</main>
-
-<footer>
-  </footer>
+</section>
