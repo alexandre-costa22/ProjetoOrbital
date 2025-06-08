@@ -1,18 +1,38 @@
-<div class="fixed-top">
-  <header
-    class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between bg-dark py-3 mb-4 border-bottom">
-    <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
-      <img src="assets/icons/orbitalIcon.jpeg" width="70" height="70" class="rounded-circle shadow"
-      style="object-fit: cover; margin-left: 10px;" alt="Logo" />
-    </a>
+<div class="fixed-top bg-black">
+  <header class="container py-2 position-relative">
+    <div class="row align-items-center">
+      
+      <div class="col d-flex align-items-center gap-3">
+        <div class="dropdown">
+          <button class="btn btn-black text-white fw-bold dropdown-toggle" type="button" data-bs-toggle="dropdown">
+            Explorar
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" routerLink="/missions">Missões</a></li>
+            <li><a class="dropdown-item" routerLink="/launches">Lançamentos</a></li>
+            <li><a class="dropdown-item" routerLink="/astronauts">Astronautas</a></li>
+          </ul>
+        </div>
+        <input type="text" class="form-control bg-black border-secondary text-white w-50" placeholder="Buscar">
+      </div>
 
-    <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-      <li><a href="#" class="nav-link px-2 link-secondary text-white">Home</a></li>
-      <li><a routerLink="/missions" class="nav-link px-2 link-dark text-white">Missões</a></li>
-    </ul>
-    <div class="col-md-3 text-end">
-      <button routerLink="/login" type="button" class="btn btn-outline-primary me-2">Login</button>
-      <button routerLink="/register" type="button" class="btn btn-primary">Cadastre-se</button>
+      <div class="col d-flex justify-content-end">
+        <ul class="nav align-items-center gap-3 mb-0">
+          <li><a routerLink="/missions" class="text-white fw-semibold nav-link">Missões</a></li>
+          <li><a routerLink="/launches" class="text-white fw-semibold nav-link">Lançamentos</a></li>
+          <li><a routerLink="/astronauts" class="text-white fw-semibold nav-link">Astronautas</a></li>
+          <li>
+            <a routerLink="/missions" class="text-white fw-semibold nav-link d-flex align-items-center gap-1">
+              Orbital+ <span class="badge bg-danger text-white small">LIVE</span>
+            </a>
+          </li>
+          <li><a *ngIf="isAuth" type="button" (click)="logOut()" class="text-white fw-semibold nav-link">Sair</a></li>
+        </ul>
+      </div>
     </div>
+
+    <a href="/" class="position-absolute top-50 start-50 translate-middle" style="z-index: 0;">
+      <img src="assets/icons/orbitalIcon.jpeg" width="50" height="50" class="rounded-circle" style="object-fit: cover;" alt="Logo Orbital">
+    </a>
   </header>
 </div>

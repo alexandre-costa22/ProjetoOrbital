@@ -3,19 +3,19 @@ import { Auth, onAuthStateChanged, signOut, User } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 
 @Component({
-    selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.css'],
-    standalone: false
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+  standalone: false,
 })
 export class AppComponent implements OnInit {
   isAuth = false;
-  selectedBanca: string = ''; 
+  selectedBanca: string = '';
   currentUser: User | null = null;
-  bancas: string[] = ['Todas','FINEP', 'Fundect', 'FAPESC', 'FAPERGS']; 
+  bancas: string[] = ['Todas', 'FINEP', 'Fundect', 'FAPESC', 'FAPERGS'];
   router: Router = inject(Router);
   private inactivityTimer: any;
-  private inactivityTimeout = 5 * 60 * 1000; 
+  private inactivityTimeout = 5 * 60 * 1000;
 
   constructor(private auth: Auth) {}
 
@@ -24,7 +24,10 @@ export class AppComponent implements OnInit {
       if (user) {
         this.isAuth = true;
         this.currentUser = user;
-        localStorage.setItem('credencial', JSON.stringify({ email: user.email, uid: user.uid }));
+        localStorage.setItem(
+          'credencial',
+          JSON.stringify({ email: user.email, uid: user.uid })
+        );
         this.startInactivityTimer();
       } else {
         this.isAuth = false;
@@ -43,12 +46,12 @@ export class AppComponent implements OnInit {
         this.router.navigate(['/login']);
       })
       .catch((err) => {
-        console.error("Erro ao deslogar:", err);
+        console.error('Erro ao deslogar:', err);
       });
   }
 
   private startInactivityTimer() {
-    this.clearInactivityTimer(); 
+    this.clearInactivityTimer();
     this.inactivityTimer = setTimeout(() => {
       this.realizarLogout();
     }, this.inactivityTimeout);
@@ -67,5 +70,9 @@ export class AppComponent implements OnInit {
     if (this.isAuth) {
       this.startInactivityTimer();
     }
+  }
+
+  hideLayout(): boolean {
+    return ['/login', '/register'].includes(this.router.url);
   }
 }

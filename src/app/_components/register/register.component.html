@@ -1,26 +1,37 @@
-<div class="login">
+<br>
+<br>
+<div class="container">
+  <div class="left-side">
+    <img src="assets/images/auth/moonLandingLoginPage.jpeg" alt="Register Image" />
+  </div>
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Crie uma conta</title>
-    </head>
+  <div class="right-side">
+    <h1>Cadastre-se</h1>
+    <p>Digite os seus dados para criar uma conta.</p>
 
-    <body>
-        <div class="page">
-            <form method="POST" class="formLogin">
-                <h1>Cadastre-se</h1>
-                <p>Digite os seus dados de acesso no campo abaixo.</p>
-                <label for="email">E-mail</label>
-                <input autocomplete="on" id="email" name="email" [(ngModel)]="usuario.email" type="email" placeholder="Digite seu e-mail"
-                    autofocus="true" />
-                <label for="password">Senha</label>
-                <input id="password" name="password" [(ngModel)]="usuario.senha" type="password" placeholder="Digite seu e-mail" />
-                <input (click)="register(usuario.email, usuario.senha)" type="submit" value="Cadastrar" class="btn" />
-                <a routerLink="/login" routerLinkActive="active">Fazer login</a>
-            </form>
-        </div>
+    <form class="formLogin" (submit)="register(usuario.email, usuario.senha); $event.preventDefault()">
+      <label for="email">E-mail</label>
+      <input
+        autocomplete="on"
+        id="email"
+        name="email"
+        [(ngModel)]="usuario.email"
+        type="email"
+        placeholder="Digite seu e-mail"
+        autofocus
+      />
 
-    </body>
+      <label for="password">Senha</label>
+      <input
+        id="password"
+        name="password"
+        [(ngModel)]="usuario.senha"
+        type="password"
+        placeholder="Digite sua senha"
+      />
+
+      <button type="submit" class="btn-login">Cadastrar</button> <a routerLink="/login" class="register-link">Fazer login</a>
+
+      </form>
+  </div>
 </div>

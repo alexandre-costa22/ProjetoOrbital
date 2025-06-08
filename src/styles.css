@@ -15,6 +15,14 @@ html, body {
   padding: 0;
 }
 
+app-login{
+  background-color: #121212;
+}
+
+app-register{
+  background-color: #121212;
+}
+
 .mdc-text-field--filled:not(.mdc-text-field--disabled){
   background-color: transparent !important;
 }

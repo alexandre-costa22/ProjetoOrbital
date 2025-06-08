@@ -1,0 +1,138 @@
+header .p-5 {
+  background-color: #f8f9fa;
+  color: #212529;
+  text-align: center;
+}
+
+header h1 {
+  color: #000;
+  margin-top: 40px;
+}
+
+header p {
+  color: #343a40;
+}
+
+.btn-space-blue {
+  background-color: #0b1f33;
+  color: white;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn-space-blue:hover {
+  background-color: #092033;
+  color: #fff;
+}
+
+.mission-section {
+  background-color: #0e0e11;
+  color: #dcdcdc;
+  padding: 5rem 1rem;
+}
+
+.mission-section h2 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.mission-section p.lead {
+  color: #bbbbbb;
+  font-size: 1.125rem;
+}
+
+.mission-section .feature-box {
+  background-color: #1a1a1f;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.mission-section .feature-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.1);
+}
+
+.mission-section h4 {
+  color: #ffffff;
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.mission-section .feature-box p {
+  color: #aaaaaa;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Layout alternado texto + imagem */
+.mission-section .mission-texts {
+  max-width: 900px;
+  margin: 0 auto 4rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.mission-item {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.mission-item.left {
+  flex-direction: row; /* texto à esquerda, imagem à direita */
+  justify-content: flex-start;
+}
+
+.mission-item.right {
+  flex-direction: row-reverse; /* texto à direita, imagem à esquerda */
+  justify-content: flex-end;
+}
+
+.mission-text {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  max-width: 480px;
+  color: #bbbbbb;
+}
+
+.mission-item.right .mission-text {
+  color: #999999;
+}
+
+.mission-item img {
+  width: 240px; /* maior */
+  height: auto;
+  border-radius: 0.75rem;
+  object-fit: cover;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.15);
+  flex-shrink: 0;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .mission-section .mission-texts {
+    max-width: 100%;
+  }
+  .mission-item {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+  .mission-text {
+    max-width: 100%;
+  }
+  .mission-item.right .mission-text {
+    text-align: center;
+  }
+  .mission-item img {
+    width: 80%;
+    max-width: 320px;
+    margin-bottom: 1.5rem;
+  }
+}
