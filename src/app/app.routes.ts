@@ -8,6 +8,7 @@ import { MissionsComponent } from './_components/missions/missions.component';
 import { ItemDescriptionComponent } from './_components/item-description/item-description.component';
 import { LaunchesComponent } from './_components/launches/launches.component';
 import { AstronautsComponent } from './_components/astronauts/astronauts.component';
+import { SpaceshipsComponent } from './_components/spaceships/spaceships.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 const redirectLoggedInToMain = () => redirectLoggedInTo(['main']);
@@ -31,6 +32,11 @@ const routes: Routes = [
   {
     path: 'launches',
     component: LaunchesComponent,
+    ...canActivate(redirectUnauthorizedToLogin)
+  },
+  {
+    path: 'spaceships',
+    component: SpaceshipsComponent,
     ...canActivate(redirectUnauthorizedToLogin)
   },
     {

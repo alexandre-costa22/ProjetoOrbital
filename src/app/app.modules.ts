@@ -31,6 +31,8 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { TranslateMissionPipe } from './pipe/translate-mission.pipe';
 import { MissionsComponent } from './_components/missions/missions.component';
 import { ItemDescriptionComponent } from './_components/item-description/item-description.component';
+import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
+import { SpaceshipsComponent } from './_components/spaceships/spaceships.component';
 
 
 
@@ -45,6 +47,7 @@ import { ItemDescriptionComponent } from './_components/item-description/item-de
     HeaderComponent,
     TranslateMissionPipe,
     MissionsComponent,
+    SpaceshipsComponent,
     ItemDescriptionComponent
   ],
   imports: [
@@ -67,6 +70,7 @@ import { ItemDescriptionComponent } from './_components/item-description/item-de
     MatIconModule,
     MatProgressBarModule,
     MatProgressSpinnerModule,
+    MatBottomSheetModule,
     CarouselModule.forRoot()
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA], 

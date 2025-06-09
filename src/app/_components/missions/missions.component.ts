@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Input } from '@angular/core';
 import { ExpeditionService } from '../../services/expeditions.service';
 import { Expeditions } from '../../models/expeditions.model';
 
@@ -12,14 +12,20 @@ declare var bootstrap: any;
 })
 export class MissionsComponent implements OnInit, AfterViewInit {
 
+  @Input() isMainMissionPage: boolean = true;
+
   expeditions: Expeditions[] = [];
   activeExpeditions: Expeditions[] = [];
   lastExpeditions: Expeditions[] = [];
   expeditionImages: { [name: string]: string } = {};
+  
+  isLoading: boolean = true; // loader ativo
 
   constructor(private expeditionService: ExpeditionService) {}
 
   ngOnInit() {
+    this.isLoading = true; // ativa loader no início
+    
     this.expeditionService.getExpeditions().subscribe(data => {
       this.expeditions = data;
       this.activeExpeditions = [];
@@ -34,10 +40,15 @@ export class MissionsComponent implements OnInit, AfterViewInit {
         }
       }
 
-      this.expeditions.forEach(expedition => {
-        this.expeditionService.getCrewPhoto(expedition.name).subscribe(url => {
-          this.expeditionImages[expedition.name] = url || 'assets/default.jpg';
+      const photoObservables = this.expeditions.map(expedition =>
+        this.expeditionService.getCrewPhoto(expedition.name)
+      );
+
+      Promise.all(photoObservables.map(obs => obs.toPromise())).then(results => {
+        results.forEach((url, i) => {
+          this.expeditionImages[this.expeditions[i].name] = url || 'assets/default.jpg';
         });
+        this.isLoading = false;
       });
     });
   }

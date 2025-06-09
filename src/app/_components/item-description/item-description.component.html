@@ -1,16 +1,18 @@
 <br>
 <br>
 <br>
-
-<div class="container mt-5">
+<div *ngIf="isLoading" class="loader-container uploader-status">
+  <mat-spinner></mat-spinner>
+</div>
+<div *ngIf="!isLoading">
+  <div class="container mt-5">
     <div class="row">
       <div class="col-md-4 text-center">
-        <img
-        src="https://dummyimage.com/300x300/cccccc/000000&text=Exemplo"
-          alt="Imagem do item"
-          class="img-fluid rounded"
-        />
-        <button class="btn btn-primary mt-3" (click)="share()">
+        <img [src]="getImage(name)" alt="Imagem do item" class="img-fluid rounded" />
+        <button class="btn btn-outline-primary mt-3" style="margin-right: 10px;" (click)="newDescripction()">
+          Nova descrição
+        </button>
+        <button class="btn btn-outline-dark mt-3" (click)="share()">
           Compartilhar
         </button>
       </div>
@@ -20,11 +22,14 @@
       </div>
     </div>
   </div>
+  <br>
+  <app-missions
+    [isMainMissionPage]="false"
+  ></app-missions>
+</div>
 
 <br>
 <br>
 <br>
 <br>
 <br>
-
-  
