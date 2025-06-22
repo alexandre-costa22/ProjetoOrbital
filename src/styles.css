@@ -15,6 +15,14 @@ html, body {
   padding: 0;
 }
 
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+
 app-login{
   background-color: #121212;
 }
@@ -37,14 +45,8 @@ app-register{
   height: 0px;
 }
 
-.mat-mdc-outlined-button:hover{
-  background-color: #2A8168 !important;
-  color: white !important;
-}
-
-mat-progress-bar {
-  background-color: #2A8168 !important; 
-
+mat-spinner {
+  --mdc-circular-progress-active-indicator-color: black;
 }
 
 .mat-mdc-progress-bar{

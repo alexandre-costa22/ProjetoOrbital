@@ -1,0 +1,65 @@
+<div *ngIf="isLoading" class="loader-container">
+    <mat-spinner></mat-spinner>
+  </div>
+  <main *ngIf="!isLoading">
+    <div class="bg-dark py-5" *ngIf="isMainMissionPage">
+      <div class="container text-center mb-4">
+        <h1 class="display-5 fst-italic text-white">MISSÕES ATIVAS</h1>
+      </div>
+  
+      <div class="container d-flex justify-content-center">
+        <div class="w-100" style="max-width: 900px;">
+          <div id="carouselExampleCaptions" class="carousel slide shadow rounded overflow-hidden" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+              <button *ngFor="let Spaceship of activeSpaceships; let i = index" type="button"
+                      data-bs-target="#carouselExampleCaptions" [attr.data-bs-slide-to]="i"
+                      [class.active]="i === 0" [attr.aria-current]="i === 0 ? 'true' : null"
+                      [attr.aria-label]="Spaceship.name"></button>
+            </div>
+  
+            <div class="carousel-inner">
+              <div *ngFor="let Spaceship of activeSpaceships; let i = index"
+                   class="carousel-item" [class.active]="i === 0">
+                <img [src]="getImage(Spaceship.name)" class="d-block w-100"
+                     style="height: 70vh; object-fit: cover;" [alt]="Spaceship.name">
+                <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-3">
+                  <h5 class="text-white">{{ Spaceship.name | translateMission }}</h5>
+                  <p class="text-white">{{ Spaceship.name | date:'dd/MM/yyyy' }}</p>
+                  <p><a class="btn btn-outline-light" [routerLink]="['/item', Spaceship.name]">Veja mais »</a></p>
+                </div>
+              </div>
+            </div>
+  
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Próximo</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="bg-light py-5">
+      <div class="container text-center mb-4">
+        <h1 class="display-5 fst-italic">{{isMainMissionPage ? 'MISSÕES PASSADAS' : 'MAIS MISSÕES'}}</h1>
+      </div>
+      <div class="container">
+        <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-5" style="display: flex; justify-content: center;">
+          <div class="col text-center bg-dark text-light rounded shadow p-4"
+               *ngFor="let Spaceship of lastSpaceships; let i = index" style="margin-right: 10px;">
+            <img [src]="getImage(Spaceship.name)" class="rounded-circle mb-3 shadow"
+                 style="width: 140px; height: 140px; object-fit: cover;" />
+            <h4 class="fw-bold">{{ Spaceship.name | translateMission }}</h4>
+            <p>{{ Spaceship.name | date:'dd/MM/yyyy' }}</p>
+            <p>{{ Spaceship.id | date:'dd/MM/yyyy' }}</p>
+            <p><a class="btn btn-outline-light" [routerLink]="['/item', Spaceship.name]">Veja mais »</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  
