@@ -14,8 +14,6 @@ export class AppComponent implements OnInit {
   currentUser: User | null = null;
   bancas: string[] = ['Todas', 'FINEP', 'Fundect', 'FAPESC', 'FAPERGS'];
   router: Router = inject(Router);
-  private inactivityTimer: any;
-  private inactivityTimeout = 5 * 60 * 1000;
 
   constructor(private auth: Auth) {}
 
@@ -28,12 +26,10 @@ export class AppComponent implements OnInit {
           'credencial',
           JSON.stringify({ email: user.email, uid: user.uid })
         );
-        this.startInactivityTimer();
       } else {
         this.isAuth = false;
         this.currentUser = null;
         localStorage.removeItem('credencial');
-        this.clearInactivityTimer();
       }
     });
   }
@@ -48,28 +44,6 @@ export class AppComponent implements OnInit {
       .catch((err) => {
         console.error('Erro ao deslogar:', err);
       });
-  }
-
-  private startInactivityTimer() {
-    this.clearInactivityTimer();
-    this.inactivityTimer = setTimeout(() => {
-      this.realizarLogout();
-    }, this.inactivityTimeout);
-  }
-
-  private clearInactivityTimer() {
-    if (this.inactivityTimer) {
-      clearTimeout(this.inactivityTimer);
-      this.inactivityTimer = null;
-    }
-  }
-
-  @HostListener('document:mousemove')
-  @HostListener('document:keydown')
-  resetInactivityTimer() {
-    if (this.isAuth) {
-      this.startInactivityTimer();
-    }
   }
 
   hideLayout(): boolean {
