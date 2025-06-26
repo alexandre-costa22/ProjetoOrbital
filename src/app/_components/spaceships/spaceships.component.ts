@@ -1,59 +1,74 @@
-import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
-import { Expeditions } from '../../models/expeditions.model';
-import { Spaceships } from '../../models/spaceshps.model';
-import { SpaceshipsService } from '../../services/spaceships.service';
+
+
+import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { SpacecraftService } from '../../services/spacecraft.service';
+import { Spaceship } from '../../models/spacecraft.model';
+import { CommonModule } from '@angular/common';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { RouterModule } from '@angular/router';
 
 declare var bootstrap: any;
 
 @Component({
   selector: 'app-spaceships',
   templateUrl: './spaceships.component.html',
-  styleUrl: './spaceships.component.css',
-  standalone: false
+  styleUrls: ['./spaceships.component.css'],
+  standalone: true,
+  imports: [
+    CommonModule,
+    RouterModule,
+    MatProgressSpinnerModule
+  ]
 })
 export class SpaceshipsComponent implements OnInit, AfterViewInit {
 
-  @Input() isMainMissionPage: boolean = true;
+  activeSpaceships: Spaceship[] = [];
+  retiredSpaceships: Spaceship[] = [];
+  isLoading: boolean = true;
 
-  spaceships: Spaceships[] = [];
-  activeSpaceships: Spaceships[] = [];
-  lastSpaceships: Spaceships[] = [];
-  spaceshipsImages: { [name: string]: string } = {};
-  
-  isLoading: boolean = true; // loader ativo
-
-  constructor(private spaceshipsService: SpaceshipsService) {}
+  constructor(private spacecraftService: SpacecraftService) {}
 
   ngOnInit() {
-    this.isLoading = true; 
-    
-    this.spaceshipsService.getSpaceships().subscribe(data => {
-      this.spaceships = data;
-      const photoObservables = this.spaceships.map(spaceships =>
-        this.spaceshipsService.getSpaceshipPhotos(spaceships.name)
-      );
+    this.isLoading = true;
 
-      Promise.all(photoObservables.map(obs => obs.toPromise())).then(results => {
-        results.forEach((urls, i) => {
-          this.spaceshipsImages[this.spaceships[i].name] = (urls && urls.length > 0) ? urls[0] : 'assets/default.jpg';
-        });
+    this.spacecraftService.getSpaceships().subscribe({
+      next: (response) => {
+
+        console.log('Resposta da API recebida:', response);
+
+
+        const allSpaceships = response.spaceships || [];
+
+        for (const ship of allSpaceships) {
+          if (ship.status.name === 'Retired' || ship.status.name === 'Destroyed') {
+            this.retiredSpaceships.push(ship);
+          } else {
+
+            this.activeSpaceships.push(ship);
+          }
+        }
+
+
+        console.log('Naves Ativas/Em Construção:', this.activeSpaceships);
+        console.log('Naves Aposentadas:', this.retiredSpaceships);
+
         this.isLoading = false;
-      });
-      
+      },
+      error: (err) => {
+
+        console.error('Falha ao buscar espaçonaves no serviço:', err);
+        this.isLoading = false;
+      }
     });
   }
 
-
   ngAfterViewInit(): void {
-    setTimeout(() => {
-      const myCarouselElement = document.querySelector('#carouselExampleCaptions');
-      if (myCarouselElement) {
-        new bootstrap.Carousel(myCarouselElement);
-      }
-    }, 5000);
-  }
 
-  getImage(spaceship: string): string {
-    return this.spaceshipsImages[spaceship];
+    setTimeout(() => {
+      const carouselElement = document.querySelector('#spaceshipsCarousel');
+      if (carouselElement && this.activeSpaceships.length > 0) {
+        new bootstrap.Carousel(carouselElement);
+      }
+    }, 1000);
   }
 }

@@ -47,7 +47,6 @@ import { SpaceshipsComponent } from './_components/spaceships/spaceships.compone
     HeaderComponent,
     TranslateMissionPipe,
     MissionsComponent,
-    SpaceshipsComponent,
     ItemDescriptionComponent
   ],
   imports: [
@@ -73,10 +72,10 @@ import { SpaceshipsComponent } from './_components/spaceships/spaceships.compone
     MatBottomSheetModule,
     CarouselModule.forRoot()
   ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA], 
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [
     provideHttpClient(),
-    provideFirebaseApp(() => initializeApp(environment.firebase)), 
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
     provideAuth(() => getAuth()),
   ],
