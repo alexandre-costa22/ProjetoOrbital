@@ -1,1 +1,67 @@
-<p>astronauts works!</p>
+<div *ngIf="isLoading" class="loader-container">
+  <mat-spinner></mat-spinner>
+</div>
+
+<main *ngIf="!isLoading">
+  <div class="bg-dark py-5">
+    <div class="container text-center mb-4">
+      <h1 class="display-5 fst-italic text-white">ASTRONAUTAS ATIVOS</h1>
+    </div>
+
+    <div class="container d-flex justify-content-center">
+      <div class="w-100" style="max-width: 900px;">
+        <div id="astronautsCarousel" class="carousel slide shadow rounded overflow-hidden" data-bs-ride="carousel">
+          <div class="carousel-indicators">
+            <button *ngFor="let astronaut of activeAstronauts; let i = index" type="button"
+                    data-bs-target="#astronautsCarousel" [attr.data-bs-slide-to]="i"
+                    [class.active]="i === 0" [attr.aria-current]="i === 0 ? 'true' : null"
+                    [attr.aria-label]="astronaut.name"></button>
+          </div>
+
+          <div class="carousel-inner">
+            <div *ngFor="let astronaut of activeAstronauts; let i = index"
+                 class="carousel-item" [class.active]="i === 0">
+
+              <img [src]="astronaut.imageUrl || 'assets/default-astronaut.jpg'"
+                   class="d-block w-100 carousel-image"
+                   [alt]="astronaut.name">
+              <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-3">
+                <h5 class="text-white">{{ astronaut.name }}</h5>
+                <p class="text-white">{{ astronaut.nationality }} - {{ astronaut.agencyAbbrev }}</p>
+                <p><a class="btn btn-outline-light" [routerLink]="['/astronauts', astronaut.id]">Veja mais »</a></p>
+              </div>
+            </div>
+          </div>
+
+          <button class="carousel-control-prev" type="button" data-bs-target="#astronautsCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#astronautsCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Próximo</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-light py-5">
+    <div class="container text-center mb-4">
+      <h1 class="display-5 fst-italic">ASTRONAUTAS APOSENTADOS</h1>
+    </div>
+    <div class="container">
+      <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-5" style="display: flex; justify-content: center;">
+        <div class="col text-center bg-dark text-light rounded shadow p-4"
+             *ngFor="let astronaut of retiredAstronauts; let i = index" style="margin-right: 10px;">
+          <img [src]="astronaut.imageUrl || 'assets/default-astronaut.jpg'" class="rounded-circle mb-3 shadow"
+               style="width: 140px; height: 140px; object-fit: cover;" [alt]="astronaut.name" />
+          <h4 class="fw-bold">{{ astronaut.name }}</h4>
+          <p>{{ astronaut.nationality }}</p>
+          <p>Nascimento: {{ astronaut.dateOfBirth | date:'dd/MM/yyyy' }}</p>
+          <p><a class="btn btn-outline-light" [routerLink]="['/astronauts', astronaut.id]">Veja mais »</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
