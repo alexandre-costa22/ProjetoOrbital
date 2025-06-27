@@ -78,7 +78,7 @@ Desenvolver uma aplicação web para centralizar e facilitar o acesso a informa�
 
 - *Git + GitHub*  
   Controle de versão distribuído para gerenciar o código-fonte do projeto e colaboração entre membros.  
-  Repositório: [https://github.com/seu-usuario/orbital](https://github.com/seu-usuario/orbital)
+  Repositório: [https://github.com/seu-usuario/orbital](https://github.com/alexandre-costa22/ProjetoOrbital)
 
 ---
 
