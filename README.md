@@ -48,30 +48,6 @@ Desenvolver uma aplicação web para centralizar e facilitar o acesso a informa�
 
 ---
 
-## 🏛️ Arquitetura
-
- - Abaixo seguem alguns dos artefatos do sistema Orbital
-
-### Diagrama de Arquitetura
-![image](https://github.com/user-attachments/assets/30bdc779-cc73-4d58-857a-75af654ea726)
-
-### MVP, Caso de Uso e Personas
-![image](https://github.com/user-attachments/assets/fe255ce7-c07f-49a5-be5c-128610a892c7)
-
-### Protótipo Inicial de Interface
-![1000738415](https://github.com/user-attachments/assets/668d8e45-6413-4a8a-b935-a7a5d01778bb)
-
-
-### Objetivos Específicos
-
-- Integrar APIs públicas (NASA e SpaceX) para exibir dados de missões espaciais;
-- Permitir filtros por data, agência ou destino;
-- Implementar contagem regressiva para lançamentos futuros;
-- Permitir que usuários favoritem missões e recebam alertas personalizados;
-- Criar uma interface acessível e responsiva para diferentes dispositivos.
-
----
-
 
 
 ## ⚙️ Stack Tecnológico
@@ -125,6 +101,18 @@ O projeto foi construído com base nos princípios de usabilidade, usando cores 
 
 A arquitetura segue uma abordagem baseada em componentes e serviços, típica de aplicações Angular.
 
+- Abaixo seguem alguns dos artefatos do sistema Orbital
+
+### Diagrama de Arquitetura
+![image](https://github.com/user-attachments/assets/30bdc779-cc73-4d58-857a-75af654ea726)
+
+### MVP, Caso de Uso e Personas
+![image](https://github.com/user-attachments/assets/fe255ce7-c07f-49a5-be5c-128610a892c7)
+
+### Protótipo Inicial de Interface
+![1000738415](https://github.com/user-attachments/assets/668d8e45-6413-4a8a-b935-a7a5d01778bb)
+
+---
 
 ## 📌 Conclusões
 
