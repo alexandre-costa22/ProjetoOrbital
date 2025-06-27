@@ -74,6 +74,7 @@ Desenvolver uma aplicação web para centralizar e facilitar o acesso a informa�
 
 - *Gemini AI*  
   Recebe, processa e retorna os dados de forma didática.
+  
   Referência: [Google Gemini](https://gemini.google.com/)
 
 - *Git + GitHub*  
