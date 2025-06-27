@@ -70,15 +70,15 @@ Desenvolver uma aplicação web para centralizar e facilitar o acesso a informa�
 
 - *Wikipedia API*  
   Fornecem descrições detalhadas sobre os itens retornados pelas APIs da NASA.  
-  Referência: [Wikipedia API]((https://en.wikipedia.org/w/api.php))
+  Referência: [Wikipedia API](https://en.wikipedia.org/w/api.php)
 
 - *Gemini AI*  
   Recebe, processa e retorna os dados de forma didática.
-  Referência: [Google Gemini]((https://gemini.google.com/))
+  Referência: [Google Gemini](https://gemini.google.com/)
 
 - *Git + GitHub*  
   Controle de versão distribuído para gerenciar o código-fonte do projeto e colaboração entre membros.  
-  Repositório: [https://github.com/seu-usuario/orbital](https://github.com/alexandre-costa22/ProjetoOrbital)
+  Repositório: [https://github.com/alexandre-costa22/ProjetoOrbital](https://github.com/alexandre-costa22/ProjetoOrbital)
 
 ---
 
