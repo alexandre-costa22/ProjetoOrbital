@@ -24,7 +24,7 @@
     "@google/generative-ai": "^0.24.1",
     "@ng-select/ng-select": "^14.7.0",
     "bootstrap": "^5.3.6",
-    "firebase": "^11.0.2",
+    "firebase": "^11.9.1",
     "marked": "^15.0.12",
     "ngx-bootstrap": "^19.0.2",
     "openai": "^4.103.0",
