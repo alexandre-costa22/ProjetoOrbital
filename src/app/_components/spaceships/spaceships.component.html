@@ -23,7 +23,7 @@
                 <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-3">
                   <h5>{{ ship.name }}</h5>
                   <p>Status: {{ ship.status.name }}</p>
-                  <p><a class="btn btn-outline-light" [routerLink]="['/spaceships', ship.id]">Veja mais »</a></p>
+                  <p><a class="btn btn-outline-light" [routerLink]="['/item', ship.name]">Veja mais »</a></p>
                 </div>
               </div>
             </div>
@@ -57,7 +57,7 @@
             <h4 class="fw-bold">{{ ship.name }}</h4>
             <p>Status: {{ ship.status.name }}</p>
             <p>Voos: {{ ship.flightsCount }}</p>
-            <p><a class="btn btn-outline-light" [routerLink]="['/spaceships', ship.id]">Veja mais »</a></p>
+            <p><a class="btn btn-outline-light" [routerLink]="['/item', ship.name]">Veja mais »</a></p>
           </div>
         </div>
       </ng-container>
