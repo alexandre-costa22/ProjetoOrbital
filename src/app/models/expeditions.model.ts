@@ -1,7 +1,7 @@
 export interface Expeditions {
     crew: Crew[];
-    end: string;
-    start: string;
+    endDate: string;
+    startDate: string;
     name: string;
   }
   

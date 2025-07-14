@@ -1,10 +1,14 @@
 import { Component, OnInit, AfterViewInit, Input } from '@angular/core';
-import { ExpeditionService } from '../../services/expeditions.service';
+import { DadosService, ExpeditionService } from '../../services/expeditions.service';
 import { Expeditions } from '../../models/expeditions.model';
-import { collection, addDoc, updateDoc , getDoc, deleteDoc } from "firebase/firestore";
+import { collection, addDoc, updateDoc , getDoc, deleteDoc, query, where, getDocs } from "firebase/firestore";
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { environment } from '../../../environments/environments';
+import { finalize, forkJoin } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { GoogleGenerativeAI } from '@google/generative-ai';
+import { EnvironmentConfiguration } from '../../key/apiKey';
 
 declare var bootstrap: any;
 
@@ -25,9 +29,14 @@ export class MissionsComponent implements OnInit, AfterViewInit {
   
   isLoading: boolean = true; 
 
+    genAI = new GoogleGenerativeAI(EnvironmentConfiguration.apiKey);
+
   
 
-  constructor(private expeditionService: ExpeditionService) {}
+  constructor(private expeditionService: ExpeditionService,
+    private http: HttpClient,
+    private dadosService: DadosService
+  ) {}
 
 
   //RETORNA ITENS DO BANCO (GET)
@@ -79,48 +88,51 @@ export class MissionsComponent implements OnInit, AfterViewInit {
   // }
 
 
-  ngOnInit() {
-    this.isLoading = true; 
-    this.expeditionService.getExpeditions().subscribe(data => {
-      this.expeditions = data;
-      this.activeExpeditions = [];
-      this.lastExpeditions = [];
+  async ngOnInit() {
+    this.isLoading = true;
+    const app = initializeApp(environment.firebase);
+    const db = getFirestore(app);
+    const expeditionsCollection = collection(db, 'expeditions');
+    const snapshot = await getDocs(expeditionsCollection);
 
-      for (let i = 0; i < this.expeditions.length; i++) {
-        const app = initializeApp(environment.firebase);
-        const db = getFirestore(app);
+    this.expeditions = snapshot.docs
+    .filter(doc => {
+      const desc = doc.data()['description'];
+      return desc !== null && desc !== undefined && desc !== '';
+    })
+    .map(doc => {
+      return {
+        ...doc.data(),
+      } as Expeditions;
+    });
 
-        //ADICIONA EXPEDIÇÕES NO BANCO
-        try {
-          const docRef =  addDoc(collection(db, "expeditions"), {
-            name: this.expeditions[i].name,
-            startDate: this.expeditions[i].start,
-            endDate: this.expeditions[i].end
-          });
-        } catch (e) {
-          console.error("Error adding document: ", e);
-        }
-
-        const exp = this.expeditions[i];
-        if (exp.end == null) {
-          this.activeExpeditions.push(exp);
-        } else {
-          this.lastExpeditions.push(exp);
-        }
+    for (const exp of this.expeditions) {
+      if (exp.endDate == null) {
+        this.activeExpeditions.push(exp);
+      } else {
+        this.lastExpeditions.push(exp);
       }
+    }
 
-      const photoObservables = this.expeditions.map(expedition =>
-        this.expeditionService.getCrewPhoto(expedition.name)
+    const photoObservables = this.expeditions.map(expedition =>
+    this.expeditionService.getCrewPhoto(expedition.name)
       );
 
-      Promise.all(photoObservables.map(obs => obs.toPromise())).then(results => {
+    if (photoObservables.length > 0) {
+      forkJoin(photoObservables).pipe(
+        finalize(() => this.isLoading = false) 
+      ).subscribe(results => {
         results.forEach((url, i) => {
           this.expeditionImages[this.expeditions[i].name] = url || 'assets/default.jpg';
         });
-        this.isLoading = false;
       });
-    });
+    }
+    this.isLoading = false; 
+  
+
+
   }
+
 
   ngAfterViewInit(): void {
     setTimeout(() => {
@@ -131,7 +143,19 @@ export class MissionsComponent implements OnInit, AfterViewInit {
     }, 5000);
   }
 
+
+  abreTela(expedition: any){
+    console.log(expedition)
+    let obj = {
+      expedition: expedition,
+      imgSrc: this.expeditionImages[expedition.name]
+    }
+    this.dadosService.atualizarDados(obj);
+  }
+
+
   getImage(expedition: string): string {
     return this.expeditionImages[expedition];
   }
+  
 }
