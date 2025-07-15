@@ -1,0 +1,59 @@
+/* Garante que o container do loader ocupe a tela e centralize o spinner */
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+/* NOVO: Adiciona um espaçamento no topo do conteúdo principal para não ficar atrás do header */
+main {
+  padding-top: 60px; /* Ajuste este valor se necessário para corresponder à altura do seu header */
+}
+
+/* Estilos principais para as seções da página */
+main .bg-dark {
+  background-color: #000 !important;
+}
+
+main .bg-dark h1,
+main .bg-dark h2 {
+  color: #fff;
+}
+
+main .bg-light {
+  background-color: #f8f9fa !important;
+  color: #212529;
+}
+
+main .bg-light h1,
+main .bg-light h2 {
+  color: #000;
+}
+
+/* Estilo para os cards de item favoritado */
+.card.bg-dark, .card.bg-secondary-dark {
+  border: 1px solid #444;
+  background-color: #222 !important;
+  color: #eee !important;
+}
+
+.card h4 {
+  color: #fff;
+}
+
+.card p {
+  color: #ccc;
+}
+
+.card .btn-outline-light {
+  border-color: #bbb;
+  color: #bbb;
+  transition: all 0.3s ease;
+}
+
+.card .btn-outline-light:hover {
+  background-color: #fff;
+  border-color: #fff;
+  color: #000;
+}

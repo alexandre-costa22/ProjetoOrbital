@@ -12,3 +12,7 @@ input::placeholder {
   color: #aaa;
 }
 
+/* NOVO: Estilo para o item do dropdown de usuário */
+.dropdown-menu-dark .dropdown-item:hover {
+  background-color: #222; /* Mesma cor do hover do botão "Explorar" */
+}

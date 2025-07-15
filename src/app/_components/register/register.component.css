@@ -1,39 +1,33 @@
-/* Reset definitivo para garantir que não haja margens ou padding no html e body */
-/* IMPORTANTE: Se você já tem isso em um styles.css global, não repita aqui! */
 html, body {
   margin: 0;
   padding: 0;
   width: 100%;
   height: 100%;
-  overflow: hidden; /* Garante que não haja barras de rolagem indesejadas */
-  box-sizing: border-box; /* Adicionado para consistência em todo o documento */
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
-/* O host do componente Angular deve preencher a altura e largura do body */
 :host {
-  display: block; /* Essencial para que ele ocupe espaço e seja afetado por height/width */
+  display: block;
   width: 100%;
   height: 100%;
-  box-sizing: border-box; /* Inclui padding e borda na largura/altura total */
+  box-sizing: border-box;
 }
 
-/* Container flex horizontal ocupando toda a tela */
 .container {
   display: flex;
-  height: 100vh; /* Ocupa 100% da altura da viewport */
-  width: 100vw;  /* Ocupa 100% da largura da viewport */
+  height: 100vh;
+  width: 100vw;
   overflow: hidden;
 }
 
-/* Lado esquerdo 60% da tela */
 .left-side {
   flex: 0 0 60%;
-  height: 100%; /* Ocupa 100% da altura do container pai (.container) */
+  height: 100%;
   overflow: hidden;
-  box-sizing: border-box; /* Garante que o padding seja incluído na largura/altura total */
+  box-sizing: border-box;
 }
 
-/* Imagem cobre tudo do lado esquerdo */
 .left-side img {
   width: 100%;
   height: 100%;
@@ -41,56 +35,49 @@ html, body {
   display: block;
 }
 
-/* Lado direito 40% da tela */
 .right-side {
   flex: 0 0 40%;
-  height: 100%; /* Ocupa 100% da altura do container pai (.container) */
+  height: 100%;
   background-color: #121212;
   color: #fff;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* CENTRALIZA O CONTEÚDO VERTICALMENTE (como o login) */
-  align-items: center; /* Centraliza o conteúdo horizontalmente */
-  padding: 40px 60px; /* PADDING ORIGINAL (como o login) */
+  justify-content: center;
+  align-items: center;
+  padding: 40px 60px;
   text-align: center;
-  box-sizing: border-box; /* Essencial para que o padding seja incluído na altura/largura */
+  box-sizing: border-box;
 }
 
-/* Estilos do título */
 .right-side h1 {
   font-size: 2.5em;
   margin-bottom: 30px;
   font-weight: 700;
-  width: 100%; /* Garante que o título ocupe a largura disponível, ajudando no alinhamento */
+  width: 100%;
 }
 
-/* Parágrafo de descrição (para o "Digite seus dados...") */
 .right-side p {
-  font-size: 1em; /* Tamanho da fonte padrão para o parágrafo */
-  color: #ccc; /* Cor um pouco mais clara para o parágrafo de descrição */
+  font-size: 1em;
+  color: #ccc;
   margin-bottom: 25px;
   text-align: center;
   width: 100%;
 }
 
-/* Formulário */
 .formLogin {
   display: flex;
   flex-direction: column;
   gap: 15px;
   width: 100%;
-  max-width: 400px; /* Largura máxima para o formulário */
-  /* margin-bottom: 30px; Removido, pois o padding do .right-side e o gap já ajudam */
+  max-width: 400px;
 }
 
-/* Labels */
 .formLogin label {
   font-size: 14px;
   font-weight: 600;
   text-align: left;
 }
 
-/* Inputs */
 .formLogin input {
   padding: 14px 12px;
   font-size: 14px;
@@ -101,12 +88,10 @@ html, body {
   color: #fff;
 }
 
-/* Inputs focados */
 .formLogin input:focus {
   outline: 2px solid #0d47a1;
 }
 
-/* Botão de login/cadastro */
 .btn-login {
   margin-top: 20px;
   background-color: #0d47a1;
@@ -120,18 +105,15 @@ html, body {
   transition: background-color 0.3s ease;
 }
 
-/* Botão hover */
 .btn-login:hover:not(:disabled) {
   background-color: #07316a;
 }
 
-/* Botão disabled */
 .btn-login:disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
 
-/* Link (para "Fazer login" ou "Criar conta") */
 .register-link {
   margin-top: 25px;
   font-size: 14px;
@@ -145,11 +127,42 @@ html, body {
   color: #fff;
 }
 
-/* Mensagem de erro */
 .error-message {
   margin-top: 20px;
   color: #e53935;
   font-weight: 600;
   font-size: 14px;
   text-align: center;
+}
+
+.custom-datepicker .mat-mdc-form-field-flex {
+  background-color: transparent !important;
+  padding: 0 !important;
+}
+
+.custom-datepicker input.mat-mdc-input-element {
+  background-color: #333;
+  color: #fff;
+  border: 1px solid #555;
+  border-radius: 8px;
+  padding: 12px 15px;
+  height: 45px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.custom-datepicker input::placeholder {
+  color: #888;
+}
+
+.custom-datepicker .mat-mdc-icon-button {
+  color: #ccc;
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+:host ::ng-deep .mat-mdc-form-field-underline {
+  display: none;
 }

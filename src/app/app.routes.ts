@@ -9,6 +9,8 @@ import { ItemDescriptionComponent } from './_components/item-description/item-de
 import { LaunchesComponent } from './_components/launches/launches.component';
 import { AstronautsComponent } from './_components/astronauts/astronauts.component';
 import { SpaceshipsComponent } from './_components/spaceships/spaceships.component';
+import { FavoritesComponent } from './_components/favorites/favorites.component';
+import { UserSettingsComponent } from './_components/user-settings/user-settings.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 const redirectLoggedInToMain = () => redirectLoggedInTo(['main']);
@@ -39,9 +41,19 @@ const routes: Routes = [
     component: SpaceshipsComponent,
     ...canActivate(redirectUnauthorizedToLogin)
   },
-    {
+  {
     path: 'astronauts',
     component: AstronautsComponent,
+    ...canActivate(redirectUnauthorizedToLogin)
+  },
+  {
+    path: 'favoriteItems',
+    component: FavoritesComponent,
+    ...canActivate(redirectUnauthorizedToLogin)
+  },
+  {
+    path: 'userSettings',
+    component: UserSettingsComponent,
     ...canActivate(redirectUnauthorizedToLogin)
   },
   {
