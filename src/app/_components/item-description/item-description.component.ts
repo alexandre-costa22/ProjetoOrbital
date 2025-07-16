@@ -3,7 +3,7 @@ import { GoogleGenerativeAI } from '@google/generative-ai';
 import { EnvironmentConfiguration } from '../../key/apiKey';
 import { ActivatedRoute } from '@angular/router';
 import { marked } from 'marked';
-import { ExpeditionService } from '../../services/expeditions.service';
+import { DadosService, ExpeditionService } from '../../services/expeditions.service';
 import { Expeditions } from '../../models/expeditions.model';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { ShareItComponent } from '../_modals/share-it/share-it.component';
@@ -26,19 +26,30 @@ export class ItemDescriptionComponent {
   expeditions: Expeditions[] = [];
   expeditionImages: { [name: string]: string } = {};
   isLoading: boolean = false;
+  srcImg: any
 
   constructor(
     private route: ActivatedRoute,
     private expeditionService: ExpeditionService,
     private bottomSheet: MatBottomSheet,
-    private wiki: WikipediaService
+    private wiki: WikipediaService,
+    private dadosService: DadosService
   ) { }
 
   ngOnInit() {
-    this.route.paramMap.subscribe(params => {
-      this.name = params.get('name') ?? '';
-      this.buscar(this.name);
+    // this.route.paramMap.subscribe(params => {
+    //   this.name = params.get('name') ?? '';
+    //   this.buscar(this.name);
+    // });
+
+    this.dadosService.dados$.subscribe(data => {
+    this.description = marked(data.expedition.description);
+    this.name = data.expedition.name;
+    this.srcImg = data.imgSrc
     });
+   
+
+    
   }
   buscar(name: string) {
     this.isLoading = true;

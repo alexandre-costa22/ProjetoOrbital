@@ -1,8 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { catchError, map, Observable, switchMap } from 'rxjs';
+import { BehaviorSubject, catchError, map, Observable, switchMap } from 'rxjs';
 import { Expeditions } from '../models/expeditions.model';
 import { of } from 'rxjs';
+
+@Injectable({ providedIn: 'root' })
+export class DadosService {
+  private dadosSource = new BehaviorSubject<any>({});
+  dados$ = this.dadosSource.asObservable();
+
+  atualizarDados(dados: any) {
+    this.dadosSource.next(dados);
+  }
+}
 
 @Injectable({
   providedIn: 'root'
