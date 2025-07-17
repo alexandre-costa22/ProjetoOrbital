@@ -1,4 +1,8 @@
 import { Component, AfterViewInit } from '@angular/core';
+import { initializeApp } from 'firebase/app';
+import { environment } from '../../../environments/environments';
+import { collection, getDocs, getFirestore, query, where } from 'firebase/firestore';
+import { getAuth } from 'firebase/auth';
 
 declare var bootstrap: any;
 
@@ -10,7 +14,13 @@ declare var bootstrap: any;
 })
 export class MainPageComponent implements AfterViewInit {
 
+
+
   constructor() {}
+
+  ngOnInit() {
+
+  }
 
   ngAfterViewInit(): void {
     setTimeout(() => {
@@ -20,4 +30,7 @@ export class MainPageComponent implements AfterViewInit {
       }
     }, 5000);
   }
+
+
+    
 }

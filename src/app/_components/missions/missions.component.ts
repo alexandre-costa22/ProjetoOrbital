@@ -9,6 +9,8 @@ import { finalize, forkJoin } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import { EnvironmentConfiguration } from '../../key/apiKey';
+import { PageEvent } from '@angular/material/paginator';
+import { getAuth } from 'firebase/auth';
 
 declare var bootstrap: any;
 
@@ -26,67 +28,23 @@ export class MissionsComponent implements OnInit, AfterViewInit {
   activeExpeditions: Expeditions[] = [];
   lastExpeditions: Expeditions[] = [];
   expeditionImages: { [name: string]: string } = {};
-  
-  isLoading: boolean = true; 
 
-    genAI = new GoogleGenerativeAI(EnvironmentConfiguration.apiKey);
+  pageSize: number = 9;
+  pageIndex: number = 0;
+  totalPages: number = 1;
+  paginatedLastExpeditions: Expeditions[] = [];
+  pageSizeOptions: number[] = [6, 9, 12, 15];
 
-  
+  isLoading: boolean = true;
+
+
+  genAI = new GoogleGenerativeAI(EnvironmentConfiguration.apiKey);
+
 
   constructor(private expeditionService: ExpeditionService,
     private http: HttpClient,
     private dadosService: DadosService
   ) {}
-
-
-  //RETORNA ITENS DO BANCO (GET)
-  // try {
-  //   // 2. Use getDoc para obter o "snapshot" (foto) do documento
-  //   const citySnap = await getDoc(cityRef);
-
-  //   // 3. Verifique se o documento existe
-  //   if (citySnap.exists()) {
-  //     console.log("Dados do documento:", citySnap.data());
-  //     // Você pode acessar os dados diretamente:
-  //     const cityData = citySnap.data();
-  //     console.log(`Nome da cidade: ${cityData.name}, População: ${cityData.population}`);
-  //     return cityData;
-  //   } else {
-  //     // O documento não existe!
-  //     console.log("Nenhum documento encontrado com o ID:", cityId);
-  //     return null;
-  //   }
-  // } catch (error) {
-  //   console.error("Erro ao obter documento: ", error);
-  //   return null;
-  // }
-
-
-  //ATUALIZA ITENS DO BANCO (PUT)
-  // try {
-  //   // 2. Use updateDoc para atualizar campos específicos do documento
-  //   //    Isso não sobrescreve o documento inteiro, apenas os campos que você especificar.
-  //   await updateDoc(cityRef, {
-  //     population: newPopulation,
-  //     // Você pode adicionar ou atualizar outros campos aqui também
-  //     lastUpdated: new Date() // Exemplo: adicionar um timestamp de atualização
-  //   });
-  //   console.log(`Documento com ID ${cityId} atualizado com sucesso!`);
-  // } catch (error) {
-  //   console.error("Erro ao atualizar documento: ", error);
-  // }
-
-
-
-  //DELETA ITENS DO BANCO (DELETE)
-  // try {
-  //   // 2. Use deleteDoc para remover o documento
-  //   await deleteDoc(cityRef);
-  //   console.log(`Documento com ID ${cityId} deletado com sucesso!`);
-  // } catch (error) {
-  //   console.error("Erro ao deletar documento: ", error);
-  // }
-
 
   async ngOnInit() {
     this.isLoading = true;
@@ -106,6 +64,9 @@ export class MissionsComponent implements OnInit, AfterViewInit {
       } as Expeditions;
     });
 
+    this.activeExpeditions = [];
+    this.lastExpeditions = [];
+
     for (const exp of this.expeditions) {
       if (exp.endDate == null) {
         this.activeExpeditions.push(exp);
@@ -120,16 +81,19 @@ export class MissionsComponent implements OnInit, AfterViewInit {
 
     if (photoObservables.length > 0) {
       forkJoin(photoObservables).pipe(
-        finalize(() => this.isLoading = false) 
+        finalize(() => {
+          this.isLoading = false;
+          this.calculateTotalPagesAndPaginate(); 
+        })
       ).subscribe(results => {
         results.forEach((url, i) => {
           this.expeditionImages[this.expeditions[i].name] = url || 'assets/default.jpg';
         });
       });
+    } else {
+      this.isLoading = false;
+      this.calculateTotalPagesAndPaginate(); 
     }
-    this.isLoading = false; 
-  
-
 
   }
 
@@ -144,6 +108,36 @@ export class MissionsComponent implements OnInit, AfterViewInit {
   }
 
 
+ 
+
+
+  calculateTotalPagesAndPaginate() {
+    this.totalPages = Math.ceil(this.lastExpeditions.length / this.pageSize);
+    this.paginateLastExpeditions();
+  }
+
+  paginateLastExpeditions() {
+    const startIndex: number = this.pageIndex * this.pageSize;
+    const endIndex: number = startIndex + parseInt(this.pageSize.toString());
+
+    this.paginatedLastExpeditions = this.lastExpeditions.slice(startIndex, endIndex);
+  }
+
+  onPageChange(event: PageEvent) {
+    this.pageSize = event.pageSize;
+    this.pageIndex = event.pageIndex;
+    this.paginateLastExpeditions();
+  }
+
+  changePage(delta: number) {
+    const newPageIndex = this.pageIndex + delta;
+    if (newPageIndex >= 0 && newPageIndex < this.totalPages) {
+      this.pageIndex = newPageIndex;
+      this.paginateLastExpeditions();
+    } else {
+    }
+  }
+
   abreTela(expedition: any){
     console.log(expedition)
     let obj = {
@@ -153,9 +147,19 @@ export class MissionsComponent implements OnInit, AfterViewInit {
     this.dadosService.atualizarDados(obj);
   }
 
+  changePageSize(newSize: number) {
+    this.pageSize = newSize;
+    this.pageIndex = 0; 
+    console.log('pageIndex reset to 0.');
+    this.calculateTotalPagesAndPaginate();
+  }
 
   getImage(expedition: string): string {
     return this.expeditionImages[expedition];
   }
-  
+
+  get currentPageDisplay(): number {
+    return this.pageIndex + 1;
+  }
+
 }

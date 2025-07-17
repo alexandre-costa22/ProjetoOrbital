@@ -33,6 +33,7 @@ import { MissionsComponent } from './_components/missions/missions.component';
 import { ItemDescriptionComponent } from './_components/item-description/item-description.component';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { SpaceshipsComponent } from './_components/spaceships/spaceships.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 
 
@@ -68,6 +69,8 @@ import { SpaceshipsComponent } from './_components/spaceships/spaceships.compone
     MatDividerModule,
     MatIconModule,
     MatProgressBarModule,
+    MatButtonModule,
+    MatPaginatorModule,
     MatProgressSpinnerModule,
     MatBottomSheetModule,
     CarouselModule.forRoot()

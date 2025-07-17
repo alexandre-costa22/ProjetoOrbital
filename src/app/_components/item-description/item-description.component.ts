@@ -7,9 +7,13 @@ import { DadosService, ExpeditionService } from '../../services/expeditions.serv
 import { Expeditions } from '../../models/expeditions.model';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { ShareItComponent } from '../_modals/share-it/share-it.component';
-import { forkJoin } from 'rxjs';
+import { forkJoin, take } from 'rxjs';
 import { WikipediaService } from '../../services/wiki-infos.service';
 import { ViewportScroller } from '@angular/common';
+import { initializeApp } from 'firebase/app';
+import { collection, getDocs, getFirestore, query, where } from 'firebase/firestore';
+import { environment } from '../../../environments/environments';
+import { FavoriteItems } from '../../models/favoriteItems.model copy';
 
 
 @Component({
@@ -28,6 +32,13 @@ export class ItemDescriptionComponent {
   isLoading: boolean = false;
   srcImg: any
 
+  favoriteItemsCollection: FavoriteItems[] = []
+
+  isFavorito: boolean = false;
+  favoritoId: string | null = null;
+  userId: string = '';
+
+
   constructor(
     private route: ActivatedRoute,
     private expeditionService: ExpeditionService,
@@ -37,15 +48,12 @@ export class ItemDescriptionComponent {
   ) { }
 
   ngOnInit() {
-    // this.route.paramMap.subscribe(params => {
-    //   this.name = params.get('name') ?? '';
-    //   this.buscar(this.name);
-    // });
-
     this.dadosService.dados$.subscribe(data => {
     this.description = marked(data.expedition.description);
     this.name = data.expedition.name;
     this.srcImg = data.imgSrc
+
+    this.verificarFavorito('item123', 'nasa');
     });
    
 
@@ -114,6 +122,18 @@ export class ItemDescriptionComponent {
       });
     });
   }
+  redirecionarParaAcervoNasa(termoPesquisa: string) {
+    
+    const urlNasa = `https://images.nasa.gov/search-results?q=${encodeURIComponent(termoPesquisa)}&media=image`
+    
+    const link = document.createElement("a");
+    link.href = urlNasa;
+    link.target = "_blank"; // abre nova guia
+    link.rel = "noopener noreferrer"; // segurança
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
 
   async run(prompt: string) {
     const model = this.genAI.getGenerativeModel({ model: "gemini-1.5-flash-latest" });
@@ -136,4 +156,50 @@ export class ItemDescriptionComponent {
   getImage(expedition: string): string {
     return this.expeditionImages[expedition];
   }
+
+  async verificarFavorito(itemId: string, itemCateg: string) {
+    const app = initializeApp(environment.firebase);
+    const db = getFirestore(app);
+  
+    const favoriteItemsCollection = collection(db, 'favoriteItems');
+    const q = query(
+      favoriteItemsCollection,
+      where('itemId', '==', this.name),
+      where('userId', '==', this.userId),
+      where('itemCateg', '==', itemCateg)
+    );
+  
+    const snapshot = await getDocs(q);
+  
+    this.favoriteItemsCollection = snapshot.docs.map(doc => doc.data() as FavoriteItems);
+  
+    if (!snapshot.empty) {
+      this.isFavorito = true;
+      this.favoritoId = snapshot.docs[0].id;
+    } else {
+      this.isFavorito = false;
+      this.favoritoId = null;
+    }
+  }
+
+  // toggleFavorito(itemId: string, itemCateg: string): void {
+  //   const app = initializeApp(environment.firebase);
+  //   const db = getFirestore(app);
+  
+  //   const favoriteItemsCollection = collection(db, 'users');
+  //   if (this.isFavorito && this.favoritoId) {
+  //     this.afs.collection('users').doc(this.favoritoId).delete().then(() => {
+  //       this.isFavorito = false;
+  //       this.favoritoId = null;
+  //     });
+  //   } else {
+  //     this.afs.collection('favoriteItems').add({
+  //       itemId,
+  //       itemCateg,
+  //       userId: this.userId
+  //     }).then(docRef => {
+  //       this.isFavorito = true;
+  //       this.favoritoId = docRef.id;
+  //     });
+  //   }}
 }
