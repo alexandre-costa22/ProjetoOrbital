@@ -6,14 +6,21 @@ import { Firestore, collection, query, where, getDocs } from '@angular/fire/fire
 import { CommonModule } from '@angular/common'; // Para *ngIf, *ngFor, etc.
 import { RouterModule } from '@angular/router'; // Para [routerLink]
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'; // Para <mat-spinner>
+import { FavoriteItemsService } from '../../app.component';
 // Removi a importação do seu pipe customizado por enquanto para simplificar a correção
 
 // Interface para padronizar os itens favoritados
-interface FavoriteItem {
-  id: string;
-  name: string;
-  type: 'mission' | 'spaceship' | 'astronaut';
-  imageUrl: string;
+export class FavoriteItem {
+  id: string = ''
+  name: string = ''
+  type: string = ''
+  imageUrl: string = ''
+}
+
+interface DadosFavorito {
+  userId: string;
+  itemId: string;
+  itemCateg: string;
 }
 
 @Component({
@@ -38,12 +45,26 @@ export class FavoritesComponent implements OnInit {
   favoriteSpaceships: FavoriteItem[] = [];
   favoriteAstronauts: FavoriteItem[] = [];
 
-  constructor(
+  constructor(                
     private auth: Auth,
-    private firestore: Firestore
+    private firestore: Firestore,
+    private favoriteItemsService: FavoriteItemsService
   ) { }
 
   ngOnInit(): void {
+    this.favoriteItemsService.dados$.subscribe(data => {
+      for(let i = 0; i < data.length; i++){
+          const item = new FavoriteItem();
+          item.id = data[i].userId;
+          item.name = data[i].itemId;
+          item.type = data[i].itemCateg;
+        
+          this.favoriteMissions.push(item);
+      }
+    });
+    
+    console.log(this.favoriteMissions)
+    
     onAuthStateChanged(this.auth, (user) => {
       if (user) {
         this.currentUser = user;

@@ -56,3 +56,16 @@ main .bg-light h1 {
 br {
   display: none;
 }
+
+.pagination-first-last {
+  display: block; 
+}
+@media (max-width: 768px) {
+  .pagination-first-last {
+      display: none; 
+  }
+  .pagination-number:not(.active),
+  .pagination-number:not(.current-adjacent) { 
+      display: none;
+  }
+}
