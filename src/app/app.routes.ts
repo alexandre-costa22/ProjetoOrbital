@@ -30,22 +30,18 @@ const routes: Routes = [
   {
     path: 'missions',
     component: MissionsComponent,
-    ...canActivate(redirectUnauthorizedToLogin)
   },
   {
     path: 'launches',
     component: LaunchesComponent,
-    ...canActivate(redirectUnauthorizedToLogin)
   },
   {
     path: 'spaceships',
     component: SpaceshipsComponent,
-    ...canActivate(redirectUnauthorizedToLogin)
   },
   {
     path: 'astronauts',
     component: AstronautsComponent,
-    ...canActivate(redirectUnauthorizedToLogin)
   },
   {
     path: 'orbital-live',
@@ -64,7 +60,8 @@ const routes: Routes = [
   },
   {
     path: 'item/:name',
-    component: ItemDescriptionComponent
+    component: ItemDescriptionComponent,
+    ...canActivate(redirectUnauthorizedToLogin)
   },
   {
     path: 'main',
