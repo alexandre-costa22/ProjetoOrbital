@@ -1,0 +1,54 @@
+:host {
+  display: block;
+  padding-top: 80px;
+  background-color: #000;
+  color: #fff;
+}
+
+.not-found-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: calc(100vh - 80px);
+}
+
+.content {
+  max-width: 600px;
+  padding: 1rem;
+}
+
+.not-found-image {
+  max-width: 400px;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.error-title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.error-message {
+  font-size: 1.1rem;
+  color: #ccc;
+  margin-bottom: 2rem;
+}
+
+.btn-primary-orbital {
+  background-color: #fff;
+  color: #000;
+  border: 2px solid #000;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-primary-orbital:hover {
+  background-color: #f0f0f0;  
+  transform: translateY(-2px);
+}

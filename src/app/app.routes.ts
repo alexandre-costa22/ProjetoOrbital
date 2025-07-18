@@ -12,6 +12,7 @@ import { SpaceshipsComponent } from './_components/spaceships/spaceships.compone
 import { FavoritesComponent } from './_components/favorites/favorites.component';
 import { UserSettingsComponent } from './_components/user-settings/user-settings.component';
 import { OrbitalLiveComponent } from './_components/orbital-live/orbital-live.component';
+import { NotFoundComponent } from './_components/not-found/not-found.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 const redirectLoggedInToMain = () => redirectLoggedInTo(['main']);
@@ -74,7 +75,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'main'
+    component: NotFoundComponent
   }
 ];
 
