@@ -8,25 +8,8 @@
   color: white;
 }
 
-.desktop-header input.form-control {
-  background-color: #222;
-  border-color: #444;
-  color: white;
-}
-
-.desktop-header input.form-control:focus {
-  background-color: #222;
-  border-color: #888;
-  color: white;
-  box-shadow: none;
-}
-
-.desktop-header input::placeholder {
-  color: #aaa;
-}
-
 @media (max-width: 991.98px) {
-  .mobile-header, .mobile-search {
+  .mobile-header {
     padding: 8px 0;
   }
 
@@ -36,26 +19,6 @@
     color: white;
     font-size: 1.5rem;
     padding: 5px 10px;
-  }
-
-  .mobile-search .bi-search {
-    color: #fff;
-    font-size: 1.2rem;
-  }
-
-  .search-input {
-    background: none;
-    border: none;
-    color: white;
-    text-align: left;
-    font-size: 1.2rem;
-    box-shadow: none !important;
-    flex-grow: 1;
-    margin: 0 1rem;
-  }
-
-  .search-input::placeholder {
-    color: #888;
   }
 
   .menu-overlay {

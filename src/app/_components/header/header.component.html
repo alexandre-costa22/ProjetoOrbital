@@ -12,7 +12,6 @@
             <li><a class="dropdown-item" routerLink="/astronauts">Astronautas</a></li>
           </ul>
         </div>
-        <input type="text" class="form-control bg-black border-secondary text-white" placeholder="Buscar">
       </div>
 
       <div class="px-4">
@@ -37,6 +36,7 @@
             </a>
             <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
               <li><a class="dropdown-item" routerLink="/favoriteItems">Favoritos</a></li>
+              <li><a class="dropdown-item" routerLink="/userSettings">Configurações</a></li>
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" type="button" (click)="logOut()">Sair</a></li>
             </ul>
@@ -45,38 +45,27 @@
       </div>
     </div>
 
-    <div class="mobile-header d-flex d-lg-none justify-content-between align-items-center" *ngIf="!isSearchOpen">
-      <button class="btn-icon" (click)="toggleMenu()">
-        <i class="bi bi-list"></i>
-      </button>
+    <div class="mobile-header d-flex d-lg-none justify-content-between align-items-center">
+      <div style="width: 49px;"></div>
       <a routerLink="/">
         <img src="assets/icons/orbitalIcon.jpeg" width="50" height="50" class="rounded-circle" style="object-fit: cover;" alt="Logo Orbital">
       </a>
-      <button class="btn-icon" (click)="toggleSearch()">
-        <i class="bi bi-search"></i>
+      <button class="btn-icon" (click)="toggleMenu()">
+        <i class="bi bi-list"></i>
       </button>
     </div>
 
-    <div class="mobile-search d-flex d-lg-none justify-content-between align-items-center" *ngIf="isSearchOpen">
-        <i class="bi bi-search"></i>
-        <input type="text" class="form-control search-input" placeholder="Buscar no Orbital" autofocus>
-        <button class="btn-icon" (click)="toggleSearch()">
-            <i class="bi bi-x-lg"></i>
-        </button>
-    </div>
   </div>
 </header>
 
 <div class="menu-overlay d-lg-none" [class.show]="isMenuOpen">
   <div class="menu-header container d-flex justify-content-between align-items-center">
-    <button class="btn-icon" (click)="toggleMenu()">
-      <i class="bi bi-x-lg"></i>
-    </button>
+    <div style="width: 49px;"></div>
     <a routerLink="/" (click)="closeMenuAndNavigate()">
       <img src="assets/icons/orbitalIcon.jpeg" width="50" height="50" class="rounded-circle" alt="Logo Orbital">
     </a>
-    <button class="btn-icon" (click)="toggleSearch()">
-      <i class="bi bi-search"></i>
+    <button class="btn-icon" (click)="toggleMenu()">
+      <i class="bi bi-x-lg"></i>
     </button>
   </div>
   <nav class="menu-nav container">
@@ -86,6 +75,7 @@
     <hr class="nav-divider">
     <div *ngIf="isAuth">
       <a class="nav-item" routerLink="/favoriteItems" (click)="closeMenuAndNavigate()"><span>Favoritos</span> <i class="bi bi-chevron-right"></i></a>
+      <a class="nav-item" routerLink="/userSettings" (click)="closeMenuAndNavigate()"><span>Configurações</span> <i class="bi bi-chevron-right"></i></a>
       <a class="nav-item" (click)="logOutAndCloseMenu()"><span>Sair</span> <i class="bi bi-chevron-right"></i></a>
       <hr class="nav-divider">
     </div>
