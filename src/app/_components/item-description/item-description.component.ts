@@ -11,9 +11,11 @@ import { forkJoin, take } from 'rxjs';
 import { WikipediaService } from '../../services/wiki-infos.service';
 import { ViewportScroller } from '@angular/common';
 import { initializeApp } from 'firebase/app';
-import { collection, getDocs, getFirestore, query, where } from 'firebase/firestore';
+import { addDoc, collection, deleteDoc, doc, getDocs, getFirestore, query, where } from 'firebase/firestore';
 import { environment } from '../../../environments/environments';
 import { FavoriteItems } from '../../models/favoriteItems.model copy';
+import { FavoriteItemsService } from '../../app.component';
+import { FavoriteItem } from '../favorites/favorites.component';
 
 
 @Component({
@@ -31,6 +33,10 @@ export class ItemDescriptionComponent {
   expeditionImages: { [name: string]: string } = {};
   isLoading: boolean = false;
   srcImg: any
+  db = getFirestore();
+  itemCateg: string = ''
+  favoriteMissions: FavoriteItem[] = [];
+
 
   favoriteItemsCollection: FavoriteItems[] = []
 
@@ -44,21 +50,86 @@ export class ItemDescriptionComponent {
     private expeditionService: ExpeditionService,
     private bottomSheet: MatBottomSheet,
     private wiki: WikipediaService,
-    private dadosService: DadosService
+    private dadosService: DadosService,
+    private favoriteItemsService: FavoriteItemsService
   ) { }
 
   ngOnInit() {
     this.dadosService.dados$.subscribe(data => {
     this.description = marked(data.expedition.description);
     this.name = data.expedition.name;
+    this.itemCateg = data.itemCateg
     this.srcImg = data.imgSrc
-
     this.verificarFavorito('item123', 'nasa');
     });
-   
 
-    
+
+    this.favoriteItemsService.dados$.subscribe(data => {
+      for(let i = 0; i < data.length; i++){
+          const item = new FavoriteItem();
+          item.id = data[i].userId;
+          item.name = data[i].itemId;
+          item.type = data[i].itemCateg;
+        
+          this.favoriteMissions.push(item);
+      }
+    });
+
   }
+
+  addFavorite() {
+
+
+    const newFavorite = {
+      userId: this.userId,
+      itemId: this.name,
+      itemCateg: this.itemCateg
+    };
+  
+    const favoriteItemsRef = collection(this.db, 'favoriteItems');
+    addDoc(favoriteItemsRef, newFavorite).then(() => {
+      this.favoriteMissions.push({
+        id: newFavorite.userId,
+        name: newFavorite.itemId,
+        type: newFavorite.itemCateg,
+        imageUrl: '' // você precisa garantir que essa propriedade exista
+      });
+      
+    });
+  }
+  
+  async removeFavorite() {
+    const favoriteItemsRef = collection(this.db, 'favoriteItems');
+    const q = query(favoriteItemsRef, 
+      where("userId", "==", this.userId),
+      where("itemId", "==", this.name),
+      where("itemCateg", "==", this.itemCateg)
+    );
+    const snapshot = await getDocs(q);
+    snapshot.forEach(async (docSnap) => {
+      await deleteDoc(doc(this.db, 'favoriteItems', docSnap.id));
+    });
+    this.favoriteMissions = this.favoriteMissions.filter(item => item.name !== this.name);
+    this.isFavorited()
+  }  
+
+  toggleFavorite() {
+    const isAlreadyFavorited = this.favoriteMissions.some(item => item.name === this.name);
+  
+    if (isAlreadyFavorited) {
+      // Remove do Firestore
+      this.removeFavorite();
+    } else {
+      // Adiciona ao Firestore
+      this.addFavorite();
+    }
+  }
+  
+
+  isFavorited(): boolean {
+    return this.favoriteMissions.some(item => item.name === this.name);
+  }
+  
   buscar(name: string) {
     this.isLoading = true;
     window.scrollTo({

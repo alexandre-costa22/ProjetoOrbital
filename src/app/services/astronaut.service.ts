@@ -8,7 +8,7 @@ import { GetAstronautsResponse } from '../models/astronauts.model';
 })
 export class AstronautService {
 
-  private apiUrl = 'http://localhost:3333';
+  private apiUrl = 'http://orbital-external-requests.onrender.com';
 
   constructor(private http: HttpClient) { }
 

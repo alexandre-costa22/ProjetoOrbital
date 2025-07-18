@@ -139,10 +139,10 @@ export class MissionsComponent implements OnInit, AfterViewInit {
   }
 
   abreTela(expedition: any){
-    console.log(expedition)
     let obj = {
       expedition: expedition,
-      imgSrc: this.expeditionImages[expedition.name]
+      imgSrc: this.expeditionImages[expedition.name],
+      itemCateg: 'expedition'
     }
     this.dadosService.atualizarDados(obj);
   }

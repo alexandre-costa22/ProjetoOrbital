@@ -8,7 +8,7 @@ import { GetSpaceshipsResponse } from '../models/spacecraft.model';
 })
 export class SpacecraftService {
 
-  private apiUrl = 'http://localhost:3333';
+  private apiUrl = 'http://orbital-external-requests.onrender.com';
 
   constructor(private http: HttpClient) { }
 
