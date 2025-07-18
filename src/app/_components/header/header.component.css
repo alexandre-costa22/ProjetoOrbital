@@ -8,11 +8,101 @@
   color: white;
 }
 
-input::placeholder {
+.desktop-header input.form-control {
+  background-color: #222;
+  border-color: #444;
+  color: white;
+}
+
+.desktop-header input.form-control:focus {
+  background-color: #222;
+  border-color: #888;
+  color: white;
+  box-shadow: none;
+}
+
+.desktop-header input::placeholder {
   color: #aaa;
 }
 
-/* NOVO: Estilo para o item do dropdown de usuário */
-.dropdown-menu-dark .dropdown-item:hover {
-  background-color: #222; /* Mesma cor do hover do botão "Explorar" */
+@media (max-width: 991.98px) {
+  .mobile-header, .mobile-search {
+    padding: 8px 0;
+  }
+
+  .btn-icon {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    padding: 5px 10px;
+  }
+
+  .mobile-search .bi-search {
+    color: #fff;
+    font-size: 1.2rem;
+  }
+
+  .search-input {
+    background: none;
+    border: none;
+    color: white;
+    text-align: left;
+    font-size: 1.2rem;
+    box-shadow: none !important;
+    flex-grow: 1;
+    margin: 0 1rem;
+  }
+
+  .search-input::placeholder {
+    color: #888;
+  }
+
+  .menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+    z-index: 1040;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    overflow-y: auto;
+  }
+
+  .menu-overlay.show {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .menu-header {
+    padding: 8px 0;
+  }
+
+  .menu-nav {
+    padding-top: 2rem;
+  }
+
+  .menu-nav .nav-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    text-decoration: none;
+    padding: 1rem 0;
+    font-size: 1.2rem;
+    border-bottom: 1px solid #222;
+  }
+
+  .menu-nav .nav-item .bi-chevron-right {
+    font-size: 1rem;
+    color: #555;
+  }
+
+  .menu-nav .nav-divider {
+    border-color: #444;
+    margin: 1rem 0;
+  }
 }

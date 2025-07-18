@@ -32,5 +32,5 @@ export class MainPageComponent implements AfterViewInit {
   }
 
 
-    
+
 }

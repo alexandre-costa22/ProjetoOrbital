@@ -1,3 +1,7 @@
+main {
+  padding-top: 60px;
+}
+
 main .bg-dark {
   background-color: #000 !important;
 }
@@ -57,7 +61,6 @@ br {
   display: none;
 }
 
-/* Estilo para o loader, centralizado */
 .loader-container {
   display: flex;
   justify-content: center;

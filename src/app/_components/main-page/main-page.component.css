@@ -26,7 +26,7 @@ header p {
 }
 
 .mission-section {
-  background-color: #0e0e11;
+  background-color: #000000;
   color: #dcdcdc;
   padding: 5rem 1rem;
 }
@@ -37,37 +37,13 @@ header p {
   color: #ffffff;
 }
 
-.mission-section p.lead {
-  color: #bbbbbb;
+.mission-text {
   font-size: 1.125rem;
-}
-
-.mission-section .feature-box {
-  background-color: #1a1a1f;
-  padding: 1.5rem;
-  border-radius: 0.75rem;
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.mission-section .feature-box:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 30px rgba(0, 255, 255, 0.1);
-}
-
-.mission-section h4 {
-  color: #ffffff;
-  font-size: 1.25rem;
-  margin-bottom: 0.75rem;
-}
-
-.mission-section .feature-box p {
-  color: #aaaaaa;
-  font-size: 0.95rem;
   line-height: 1.6;
+  max-width: 480px;
+  color: #bbbbbb;
 }
 
-/* Layout alternado texto + imagem */
 .mission-section .mission-texts {
   max-width: 900px;
   margin: 0 auto 4rem auto;
@@ -85,28 +61,17 @@ header p {
 }
 
 .mission-item.left {
-  flex-direction: row; /* texto à esquerda, imagem à direita */
+  flex-direction: row;
   justify-content: flex-start;
 }
 
 .mission-item.right {
-  flex-direction: row-reverse; /* texto à direita, imagem à esquerda */
+  flex-direction: row-reverse;
   justify-content: flex-end;
 }
 
-.mission-text {
-  font-size: 1.125rem;
-  line-height: 1.6;
-  max-width: 480px;
-  color: #bbbbbb;
-}
-
-.mission-item.right .mission-text {
-  color: #999999;
-}
-
 .mission-item img {
-  width: 240px; /* maior */
+  width: 240px;
   height: auto;
   border-radius: 0.75rem;
   object-fit: cover;
@@ -114,7 +79,6 @@ header p {
   flex-shrink: 0;
 }
 
-/* Responsividade */
 @media (max-width: 768px) {
   .mission-section .mission-texts {
     max-width: 100%;

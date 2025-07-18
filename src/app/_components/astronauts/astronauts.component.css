@@ -1,3 +1,7 @@
+main {
+  padding-top: 60px;
+}
+
 main .bg-dark {
   background-color: #000 !important;
 }
