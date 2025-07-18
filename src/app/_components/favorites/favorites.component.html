@@ -16,7 +16,7 @@
       <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
         <div *ngFor="let mission of favoriteMissions" class="col">
           <div class="card h-100 text-center bg-dark text-light rounded shadow p-3">
-            <img [src]="getImage(mission.id)" class="rounded-circle mx-auto mb-3 shadow"
+            <img src="assets/default.jpg" class="rounded-circle mx-auto mb-3 shadow"
                  style="width: 140px; height: 140px; object-fit: cover;" [alt]="mission.name">
             <div class="card-body">
               <h4 class="fw-bold">{{ mission.name }}</h4>
@@ -38,7 +38,7 @@
       <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
         <div *ngFor="let spaceship of favoriteSpaceships" class="col">
            <div class="card h-100 text-center bg-secondary-dark text-light rounded shadow p-3">
-            <img [src]="getImage(spaceship.id)" class="rounded-circle mx-auto mb-3 shadow"
+            <img src="assets/default.jpg" class="rounded-circle mx-auto mb-3 shadow"
                  style="width: 140px; height: 140px; object-fit: cover;" [alt]="spaceship.name">
             <div class="card-body">
               <h4 class="fw-bold">{{ spaceship.name }}</h4>
@@ -60,7 +60,7 @@
       <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
         <div *ngFor="let astronaut of favoriteAstronauts" class="col">
           <div class="card h-100 text-center bg-dark text-light rounded shadow p-3">
-            <img [src]="getImage(astronaut.id)" class="rounded-circle mx-auto mb-3 shadow"
+            <img src="assets/default.jpg" class="rounded-circle mx-auto mb-3 shadow"
                  style="width: 140px; height: 140px; object-fit: cover;" [alt]="astronaut.name">
             <div class="card-body">
               <h4 class="fw-bold">{{ astronaut.name }}</h4>
