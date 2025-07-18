@@ -1,0 +1,59 @@
+<div *ngIf="isLoading" class="loader-container">
+  <mat-spinner></mat-spinner>
+</div>
+
+<main *ngIf="!isLoading">
+  <div class="bg-black py-5">
+    <div class="container text-center">
+      <h1 class="display-5 fst-italic text-white">ORBITAL LIVE</h1>
+      <p class="lead text-white-50">Acompanhe os próximos lançamentos em tempo real</p>
+    </div>
+  </div>
+
+  <div class="live-container bg-light py-5">
+    <div class="container">
+      <div class="row g-4 justify-content-center">
+        <div class="col-12" *ngFor="let launch of upcomingLaunches">
+          <div class="launch-card">
+            <div class="launch-image" [style.background-image]="'url(' + launch.image + ')'"></div>
+            <div class="launch-details">
+              <span class="status-badge" [class.go]="launch.status.abbrev === 'Go'">{{ launch.status.name | translateStatus }}</span>
+
+              <h3 class="mission-name">{{ launch.name }}</h3>
+              <p class="mission-info">
+                {{ launch.launch_service_provider.name }} • {{ launch.pad.location.name }}
+              </p>
+
+              <div *ngIf="!launch.hasOccurred" class="countdown-timer">
+                <div class="time-box">
+                  <span class="value">{{ launch.countdown.days }}</span>
+                  <span class="label">dias</span>
+                </div>
+                <div class="time-box">
+                  <span class="value">{{ launch.countdown.hours | number: '2.0' }}</span>
+                  <span class="label">h</span>
+                </div>
+                <div class="time-box">
+                  <span class="value">{{ launch.countdown.minutes | number: '2.0' }}</span>
+                  <span class="label">m</span>
+                </div>
+                <div class="time-box">
+                  <span class="value">{{ launch.countdown.seconds | number: '2.0' }}</span>
+                  <span class="label">s</span>
+                </div>
+              </div>
+
+              <div *ngIf="launch.hasOccurred" class="liftoff-message">
+                <span>🚀 Lançamento em Andamento ou Concluído</span>
+              </div>
+
+              <button class="btn btn-watch disabled" disabled>
+                <i class="bi bi-youtube me-2"></i> Assistir
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

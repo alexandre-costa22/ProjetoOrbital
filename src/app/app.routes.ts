@@ -11,6 +11,7 @@ import { AstronautsComponent } from './_components/astronauts/astronauts.compone
 import { SpaceshipsComponent } from './_components/spaceships/spaceships.component';
 import { FavoritesComponent } from './_components/favorites/favorites.component';
 import { UserSettingsComponent } from './_components/user-settings/user-settings.component';
+import { OrbitalLiveComponent } from './_components/orbital-live/orbital-live.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 const redirectLoggedInToMain = () => redirectLoggedInTo(['main']);
@@ -44,6 +45,11 @@ const routes: Routes = [
   {
     path: 'astronauts',
     component: AstronautsComponent,
+    ...canActivate(redirectUnauthorizedToLogin)
+  },
+  {
+    path: 'orbital-live',
+    component: OrbitalLiveComponent,
     ...canActivate(redirectUnauthorizedToLogin)
   },
   {
