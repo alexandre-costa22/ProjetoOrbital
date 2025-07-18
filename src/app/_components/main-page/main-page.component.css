@@ -79,6 +79,54 @@ header p {
   flex-shrink: 0;
 }
 
+/* NOVOS ESTILOS PARA A SEÇÃO DE RECURSOS */
+.feature-box {
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  padding: 2rem;
+  border-radius: 8px;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+.feature-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.feature-icon {
+  font-size: 2.5rem;
+  color: #0b1f33;
+  margin-bottom: 1rem;
+}
+
+.feature-connector {
+  position: relative;
+}
+
+/* A linha de conexão */
+.feature-connector > .col-md-4:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 60px; /* Alinhar verticalmente com os ícones */
+  right: -16.66%; /* Metade da largura de uma coluna, ajustado */
+  width: 33.33%; /* Largura para conectar até a próxima coluna */
+  height: 2px;
+  background: linear-gradient(to right, #dee2e6, #dee2e6 50%, transparent 50%);
+  background-size: 10px 2px;
+  z-index: -1;
+}
+
+/* NOVOS ESTILOS PARA A IMAGEM FINAL */
+.final-image-section {
+  width: 100%;
+  line-height: 0; /* Remove espaço extra abaixo da imagem */
+}
+.final-image {
+  width: 100%;
+  height: 50vh; /* Altura de 50% da tela */
+  object-fit: cover; /* Garante que a imagem cubra a área sem distorcer */
+}
+
+
 @media (max-width: 768px) {
   .mission-section .mission-texts {
     max-width: 100%;
@@ -98,5 +146,9 @@ header p {
     width: 80%;
     max-width: 320px;
     margin-bottom: 1.5rem;
+  }
+
+  .feature-connector > .col-md-4:not(:last-child)::after {
+    display: none;
   }
 }
