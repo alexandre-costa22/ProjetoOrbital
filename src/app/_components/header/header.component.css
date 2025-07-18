@@ -8,7 +8,64 @@
   color: white;
 }
 
-input::placeholder {
-  color: #aaa;
-}
+@media (max-width: 991.98px) {
+  .mobile-header {
+    padding: 8px 0;
+  }
 
+  .btn-icon {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    padding: 5px 10px;
+  }
+
+  .menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+    z-index: 1040;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    overflow-y: auto;
+  }
+
+  .menu-overlay.show {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .menu-header {
+    padding: 8px 0;
+  }
+
+  .menu-nav {
+    padding-top: 2rem;
+  }
+
+  .menu-nav .nav-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    text-decoration: none;
+    padding: 1rem 0;
+    font-size: 1.2rem;
+    border-bottom: 1px solid #222;
+  }
+
+  .menu-nav .nav-item .bi-chevron-right {
+    font-size: 1rem;
+    color: #555;
+  }
+
+  .menu-nav .nav-divider {
+    border-color: #444;
+    margin: 1rem 0;
+  }
+}

@@ -1,3 +1,7 @@
+main {
+  padding-top: 60px;
+}
+
 main .bg-dark {
   background-color: #000 !important;
 }
@@ -13,6 +17,11 @@ main .bg-light {
 
 main .bg-light h1 {
   color: #000;
+}
+
+.carousel-mission-image {
+  height: 70vh;
+  object-fit: cover;
 }
 
 .carousel-caption h5,
@@ -55,4 +64,14 @@ main .bg-light h1 {
 
 br {
   display: none;
+}
+
+@media (max-width: 768px) {
+  .carousel-mission-image {
+    height: 45vh;
+  }
+
+  main h1.display-5 {
+    font-size: 2rem;
+  }
 }

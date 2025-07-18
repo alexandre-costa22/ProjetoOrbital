@@ -1,0 +1,125 @@
+main {
+  padding-top: 80px;
+  margin-top: -14px;
+}
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+main .bg-black {
+  background-color: #000 !important;
+}
+
+.live-container.bg-light {
+  background-color: #f8f9fa !important;
+  min-height: calc(100vh - 80px - 205px);
+}
+
+.launch-card {
+  display: flex;
+  background-color: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.launch-card:hover {
+  transform: translateY(-5px);
+}
+
+.launch-image {
+  flex: 0 0 250px;
+  background-size: cover;
+  background-position: center;
+}
+
+.launch-details {
+  padding: 1.5rem 2rem;
+  flex-grow: 1;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  background-color: #6c757d;
+  color: #fff;
+  margin-bottom: 0.75rem;
+}
+
+.status-badge.go {
+  background-color: #198754; /* Verde para 'Go for Launch' */
+}
+
+.mission-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.mission-info {
+  color: #6c757d;
+  margin-bottom: 1.5rem;
+}
+
+.countdown-timer {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.time-box {
+  text-align: center;
+}
+
+.time-box .value {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.time-box .label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: #6c757d;
+}
+
+.liftoff-message {
+  font-weight: 600;
+  color: #198754;
+  margin-bottom: 1.5rem;
+  font-size: 1.25rem;
+}
+
+.btn-watch {
+  background-color: #ff0000;
+  color: white;
+  font-weight: 600;
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+  .launch-card {
+    flex-direction: column;
+  }
+  .launch-image {
+    flex-basis: 200px;
+  }
+  .launch-details {
+    padding: 1.5rem;
+    text-align: center;
+  }
+  .countdown-timer {
+    justify-content: center;
+  }
+}

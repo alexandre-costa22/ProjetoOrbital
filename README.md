@@ -48,6 +48,8 @@ Desenvolver uma aplicação web para centralizar e facilitar o acesso a informa�
 
 ---
 
+
+
 ## ⚙️ Stack Tecnológico
 
 - *TypeScript*  
@@ -66,9 +68,18 @@ Desenvolver uma aplicação web para centralizar e facilitar o acesso a informa�
   Fornecem dados públicos sobre eventos astronômicos, imagens e lançamentos espaciais.  
   Referência: [NASA APIs](https://api.nasa.gov/) | [SpaceX API](https://github.com/r-spacex/SpaceX-API)
 
+- *Wikipedia API*  
+  Fornecem descrições detalhadas sobre os itens retornados pelas APIs da NASA.  
+  Referência: [Wikipedia API](https://en.wikipedia.org/w/api.php)
+
+- *Gemini AI*  
+  Recebe, processa e retorna os dados de forma didática.
+  
+  Referência: [Google Gemini](https://gemini.google.com/)
+
 - *Git + GitHub*  
   Controle de versão distribuído para gerenciar o código-fonte do projeto e colaboração entre membros.  
-  Repositório: [https://github.com/seu-usuario/orbital](https://github.com/seu-usuario/orbital)
+  Repositório: [https://github.com/alexandre-costa22/ProjetoOrbital](https://github.com/alexandre-costa22/ProjetoOrbital)
 
 ---
 
@@ -91,34 +102,16 @@ O projeto foi construído com base nos princípios de usabilidade, usando cores 
 
 A arquitetura segue uma abordagem baseada em componentes e serviços, típica de aplicações Angular.
 
+- Abaixo seguem alguns dos artefatos do sistema Orbital
 
-### Artefatos do Projeto
+### Diagrama de Arquitetura
+![image](https://github.com/user-attachments/assets/30bdc779-cc73-4d58-857a-75af654ea726)
 
-- [x] Personas e jornada do usuário  
-- [x] Canvas de modelo de negócio  
-- [x] Protótipo de interface no Figma  
-- [x] Tabela comparativa com sistemas semelhantes  
-- [x] Diagrama de casos de uso e entidades (ERD)
+### MVP, Caso de Uso e Personas
+![image](https://github.com/user-attachments/assets/fe255ce7-c07f-49a5-be5c-128610a892c7)
 
-> Todos os artefatos estão disponíveis na pasta /docs do repositório.
-
----
-
-## ✅ Validação
-
-### Estratégia
-
-A validação do sistema foi conduzida com base em feedbacks de usuários reais(ESTES SAO APENAS EXEMPLOS:
-
-- Entrevistas com 3 professores de ciências e 5 estudantes de ensino médio;
-- Testes de usabilidade com protótipos navegáveis no Figma;
-- Questionário de satisfação com escala de 1 a 5.
-
-### Consolidação dos Dados(ESTES SAO APENAS EXEMPLOS)
-
-- 87,5% dos usuários consideraram a interface "intuitiva";
-- 100% destacaram como positivo o recurso de contagem regressiva;
-- Gráfico com resultados completo disponível em /docs/validacao-resultados.pdf.
+### Protótipo Inicial de Interface
+![1000738415](https://github.com/user-attachments/assets/668d8e45-6413-4a8a-b935-a7a5d01778bb)
 
 ---
 
@@ -130,12 +123,14 @@ O projeto *Orbital* demonstrou ser uma solução viável para centralizar inform
 
 - Dependência de disponibilidade e estabilidade das APIs externas;
 - Funcionalidade de notificações ainda limitada no frontend.
+- Ainda não substitui uma pesquisa acadêmica como fonte de informações.
 
 ### Perspectivas Futuras
 
 - Expansão do sistema para abranger eventos astronômicos (chuvas de meteoros, eclipses);
 - Criação de um aplicativo móvel com funcionalidades offline;
-- Inclusão de gamificação e trilhas de aprendizado para jovens estudantes.
+- Inclusão de gamificação e trilhas de aprendizado para jovens estudantes;
+- Personalização de uso.
 
 ---
 

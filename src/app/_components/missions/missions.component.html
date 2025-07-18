@@ -1,5 +1,8 @@
-<main>
-  <div class="bg-dark py-5">
+<div *ngIf="isLoading" class="loader-container">
+  <mat-spinner></mat-spinner>
+</div>
+<main *ngIf="!isLoading">
+  <div class="bg-dark py-5" *ngIf="isMainMissionPage">
     <div class="container text-center mb-4">
       <h1 class="display-5 fst-italic text-white">MISSÕES ATIVAS</h1>
     </div>
@@ -17,12 +20,11 @@
           <div class="carousel-inner">
             <div *ngFor="let expedicao of activeExpeditions; let i = index"
                  class="carousel-item" [class.active]="i === 0">
-              <img [src]="getImage(expedicao.name)" class="d-block w-100"
-                   style="height: 70vh; object-fit: cover;" [alt]="expedicao.name">
+              <img [src]="getImage(expedicao.name)" class="d-block w-100 carousel-mission-image" [alt]="expedicao.name">
               <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-3">
                 <h5 class="text-white">{{ expedicao.name | translateMission }}</h5>
-                <p class="text-white">{{ expedicao.start | date:'dd/MM/yyyy' }}</p>
-                <p><a class="btn btn-outline-light" [routerLink]="['/item', expedicao.name]">Veja mais »</a></p>
+                <p class="text-white">{{ expedicao.startDate | date:'dd/MM/yyyy' }}</p>
+                <p><a (click)="abreTela(expedicao)"class="btn btn-outline-light" [routerLink]="['/item', expedicao.name]">Veja mais »</a></p>
               </div>
             </div>
           </div>
@@ -42,19 +44,42 @@
 
   <div class="bg-light py-5">
     <div class="container text-center mb-4">
-      <h1 class="display-5 fst-italic">MISSÕES PASSADAS</h1>
+      <h1 class="display-5 fst-italic">{{isMainMissionPage ? 'MISSÕES PASSADAS' : 'MAIS MISSÕES'}}</h1>
     </div>
     <div class="container">
-      <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-5" style="display: flex; justify-content: center;">
-        <div class="col text-center bg-dark text-light rounded shadow p-4"
-             *ngFor="let expedicao of lastExpeditions; let i = index" style="margin-right: 10px;">
-          <img [src]="getImage(expedicao.name)" class="rounded-circle mb-3 shadow"
-               style="width: 140px; height: 140px; object-fit: cover;" />
-          <h4 class="fw-bold">{{ expedicao.name | translateMission }}</h4>
-          <p>{{ expedicao.start | date:'dd/MM/yyyy' }}</p>
-          <p>{{ expedicao.end | date:'dd/MM/yyyy' }}</p>
-          <p><a class="btn btn-outline-light" [routerLink]="['/item', expedicao.name]">Veja mais »</a></p>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 justify-content-center">
+        <div class="col" *ngFor="let expedicao of paginatedLastExpeditions; let i = index">
+          <div class="text-center bg-dark text-light rounded shadow p-4 h-100">
+            <img [src]="getImage(expedicao.name)" class="rounded-circle mb-3 shadow"
+                 style="width: 140px; height: 140px; object-fit: cover;" />
+            <h4 class="fw-bold">{{ expedicao.name | translateMission }}</h4>
+            <p>{{ expedicao.startDate | date:'dd/MM/yyyy' }}</p>
+            <p>{{ expedicao.endDate | date:'dd/MM/yyyy' }}</p>
+            <p><a (click)="abreTela(expedicao)" class="btn btn-outline-light" [routerLink]="['/item', expedicao.name]">Veja mais »</a></p>
+          </div>
         </div>
+      </div>
+    </div>
+    <div class="d-flex flex-column align-items-center mt-4 gap-3">
+      <div class="d-flex align-items-center gap-3">
+        <label for="pageSize" class="form-label mb-0">Itens por página:</label>
+        <select id="pageSize" class="form-select form-select-sm w-auto"
+                [(ngModel)]="pageSize"
+                (change)="changePageSize(pageSize)">
+          <option *ngFor="let size of pageSizeOptions" [value]="size">{{ size }}</option>
+        </select>
+        <span class="small text-muted">Página {{ currentPageDisplay }} de {{ totalPages }}</span>
+      </div>
+
+      <div class="d-flex gap-2">
+        <button class="btn btn-outline-secondary btn-sm"
+                (click)="changePage(-1)" [disabled]="pageIndex === 0">
+          ← Anterior
+        </button>
+        <button class="btn btn-outline-dark"
+                (click)="changePage(1)" [disabled]="pageIndex === totalPages - 1">
+          Próximo →
+        </button>
       </div>
     </div>
   </div>

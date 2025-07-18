@@ -1,5 +1,3 @@
-<br>
-<br>
 <div class="container">
   <div class="left-side">
     <img src="assets/images/auth/moonLandingLoginPage.jpeg" alt="Register Image" />
@@ -9,7 +7,26 @@
     <h1>Cadastre-se</h1>
     <p>Digite os seus dados para criar uma conta.</p>
 
-    <form class="formLogin" (submit)="register(usuario.email, usuario.senha); $event.preventDefault()">
+    <form class="formLogin" (submit)="createUser(); $event.preventDefault()">
+      
+      <label for="name">Nome completo</label>
+      <input
+        id="name"
+        name="name"
+        [(ngModel)]="usuario.name"
+        type="text"
+        placeholder="Digite seu nome completo"
+        autofocus
+      />
+
+      <label for="birthDate">Data de nascimento</label>
+      <input
+        id="birthDate"
+        name="birthDate"
+        [(ngModel)]="usuario.birthDate"
+        type="date"
+      />
+
       <label for="email">E-mail</label>
       <input
         autocomplete="on"
@@ -18,7 +35,6 @@
         [(ngModel)]="usuario.email"
         type="email"
         placeholder="Digite seu e-mail"
-        autofocus
       />
 
       <label for="password">Senha</label>
@@ -30,8 +46,9 @@
         placeholder="Digite sua senha"
       />
 
-      <button type="submit" class="btn-login">Cadastrar</button> <a routerLink="/login" class="register-link">Fazer login</a>
+      <button type="submit" class="btn-login">Cadastrar</button> 
+      <a routerLink="/login" class="register-link">Fazer login</a>
 
-      </form>
+    </form>
   </div>
 </div>

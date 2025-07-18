@@ -1,0 +1,55 @@
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+main {
+  padding-top: 60px;
+}
+
+main .bg-dark {
+  background-color: #000 !important;
+}
+
+main .bg-dark h1,
+main .bg-dark h2 {
+  color: #fff;
+}
+
+main .bg-light {
+  background-color: #f8f9fa !important;
+  color: #212529;
+}
+
+main .bg-light h1,
+main .bg-light h2 {
+  color: #000;
+}
+
+.card.bg-dark, .card.bg-secondary-dark {
+  border: 1px solid #444;
+  background-color: #222 !important;
+  color: #eee !important;
+}
+
+.card h4 {
+  color: #fff;
+}
+
+.card p {
+  color: #ccc;
+}
+
+.card .btn-outline-light {
+  border-color: #bbb;
+  color: #bbb;
+  transition: all 0.3s ease;
+}
+
+.card .btn-outline-light:hover {
+  background-color: #fff;
+  border-color: #fff;
+  color: #000;
+}

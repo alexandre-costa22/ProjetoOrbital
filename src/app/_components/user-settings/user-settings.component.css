@@ -1,0 +1,124 @@
+main {
+  padding-top: 80px;
+  margin-top: -14px; 
+  background-color: #f8f9fa;
+}
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f8f9fa;
+}
+
+main .bg-black {
+  background-color: #000 !important;
+}
+
+.settings-container {
+  padding-top: 3rem;
+  padding-bottom: 2rem;
+}
+
+.settings-card {
+  background-color: #000000;
+  padding: 2rem;
+  border-radius: 8px;
+  color: #fff;
+  height: 100%;
+}
+
+.settings-card h2 {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.settings-card hr {
+  border-color: #333;
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #ccc;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #2c2c2c;
+  border: 1px solid #444;
+  border-radius: 5px;
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.form-control:focus {
+  background-color: #333;
+  border-color: #0d6efd;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, .25);
+}
+
+.form-control:disabled {
+  background-color: #222;
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.btn-action {
+  color: #fff;
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+  padding: 0.75rem 1.25rem;
+  font-size: 1rem;
+  font-weight: 600;
+  width: 100%;
+  border-radius: 5px;
+  transition: background-color 0.2s;
+}
+
+.btn-action:hover:not(:disabled) {
+  background-color: #0b5ed7;
+  border-color: #0a58ca;
+}
+
+.btn-action:disabled {
+  background-color: #333;
+  border-color: #444;
+  cursor: not-allowed;
+}
+
+.alert-message {
+  padding: 0.75rem 1rem;
+  border-radius: 5px;
+  font-weight: 500;
+}
+
+.alert-message.success {
+  background-color: rgba(25, 135, 84, 0.2);
+  color: #198754;
+  border: 1px solid #198754;
+}
+
+.alert-message.error {
+  background-color: rgba(220, 53, 69, 0.2);
+  color: #dc3545;
+  border: 1px solid #dc3545;
+}
+
+@media (max-width: 991.98px) {
+  .settings-container {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+}

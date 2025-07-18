@@ -24,7 +24,7 @@ export class LoginComponent {
   router: Router = inject(Router);
   erroLogin: boolean = false;
   mensagemErro: string = '';
-  carregando: boolean = false; 
+  carregando: boolean = false;
 
   constructor() {}
 
@@ -60,7 +60,7 @@ export class LoginComponent {
     } else if (error.code === 'auth/invalid-email') {
       return "Email inválido.";
     } else {
-      return "Erro ao realizar o login. Tente novamente mais tarde.";
+      return "Credenciais inválidas.";
     }
   }
 }

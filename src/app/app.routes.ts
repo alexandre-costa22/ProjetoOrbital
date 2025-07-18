@@ -8,6 +8,11 @@ import { MissionsComponent } from './_components/missions/missions.component';
 import { ItemDescriptionComponent } from './_components/item-description/item-description.component';
 import { LaunchesComponent } from './_components/launches/launches.component';
 import { AstronautsComponent } from './_components/astronauts/astronauts.component';
+import { SpaceshipsComponent } from './_components/spaceships/spaceships.component';
+import { FavoritesComponent } from './_components/favorites/favorites.component';
+import { UserSettingsComponent } from './_components/user-settings/user-settings.component';
+import { OrbitalLiveComponent } from './_components/orbital-live/orbital-live.component';
+import { NotFoundComponent } from './_components/not-found/not-found.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 const redirectLoggedInToMain = () => redirectLoggedInTo(['main']);
@@ -26,21 +31,38 @@ const routes: Routes = [
   {
     path: 'missions',
     component: MissionsComponent,
-    ...canActivate(redirectUnauthorizedToLogin)
   },
   {
     path: 'launches',
     component: LaunchesComponent,
-    ...canActivate(redirectUnauthorizedToLogin)
   },
-    {
+  {
+    path: 'spaceships',
+    component: SpaceshipsComponent,
+  },
+  {
     path: 'astronauts',
     component: AstronautsComponent,
+  },
+  {
+    path: 'orbital-live',
+    component: OrbitalLiveComponent,
+    ...canActivate(redirectUnauthorizedToLogin)
+  },
+  {
+    path: 'favoriteItems',
+    component: FavoritesComponent,
+    ...canActivate(redirectUnauthorizedToLogin)
+  },
+  {
+    path: 'userSettings',
+    component: UserSettingsComponent,
     ...canActivate(redirectUnauthorizedToLogin)
   },
   {
     path: 'item/:name',
-    component: ItemDescriptionComponent
+    component: ItemDescriptionComponent,
+    ...canActivate(redirectUnauthorizedToLogin)
   },
   {
     path: 'main',
@@ -53,7 +75,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'main'
+    component: NotFoundComponent
   }
 ];
 
