@@ -104,8 +104,11 @@ export class AppComponent implements OnInit {
 
     this.arrayFavItems = favItems
 
-    console.log(this.arrayFavItems)
+    const obj={
+      arrayFavItems: this.arrayFavItems,
+      uids: uids
+    }
 
-    this.favoriteItemsService.atualizarDados(this.arrayFavItems);
+    this.favoriteItemsService.atualizarDados(obj);
   }
 }

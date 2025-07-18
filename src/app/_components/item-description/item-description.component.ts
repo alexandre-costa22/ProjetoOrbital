@@ -37,6 +37,8 @@ export class ItemDescriptionComponent {
   itemCateg: string = ''
   favoriteMissions: FavoriteItem[] = [];
 
+  uid: string = '';
+
 
   favoriteItemsCollection: FavoriteItems[] = []
 
@@ -60,7 +62,7 @@ export class ItemDescriptionComponent {
     this.name = data.expedition.name;
     this.itemCateg = data.itemCateg
     this.srcImg = data.imgSrc
-    this.verificarFavorito('item123', 'nasa');
+    this.verificarFavorito();
     });
 
 
@@ -73,15 +75,13 @@ export class ItemDescriptionComponent {
         
           this.favoriteMissions.push(item);
       }
+      this.uid = data.uids[0]
     });
-
   }
 
   addFavorite() {
-
-
     const newFavorite = {
-      userId: this.userId,
+      userId: this.uid,
       itemId: this.name,
       itemCateg: this.itemCateg
     };
@@ -92,7 +92,7 @@ export class ItemDescriptionComponent {
         id: newFavorite.userId,
         name: newFavorite.itemId,
         type: newFavorite.itemCateg,
-        imageUrl: '' // você precisa garantir que essa propriedade exista
+        imageUrl: ''
       });
       
     });
@@ -117,10 +117,8 @@ export class ItemDescriptionComponent {
     const isAlreadyFavorited = this.favoriteMissions.some(item => item.name === this.name);
   
     if (isAlreadyFavorited) {
-      // Remove do Firestore
       this.removeFavorite();
     } else {
-      // Adiciona ao Firestore
       this.addFavorite();
     }
   }
@@ -228,7 +226,7 @@ export class ItemDescriptionComponent {
     return this.expeditionImages[expedition];
   }
 
-  async verificarFavorito(itemId: string, itemCateg: string) {
+  async verificarFavorito() {
     const app = initializeApp(environment.firebase);
     const db = getFirestore(app);
   
@@ -236,8 +234,8 @@ export class ItemDescriptionComponent {
     const q = query(
       favoriteItemsCollection,
       where('itemId', '==', this.name),
-      where('userId', '==', this.userId),
-      where('itemCateg', '==', itemCateg)
+      where('userId', '==', this.uid),
+      where('itemCateg', '==', this.itemCateg)
     );
   
     const snapshot = await getDocs(q);

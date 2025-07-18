@@ -37,6 +37,8 @@ export class MissionsComponent implements OnInit, AfterViewInit {
 
   isLoading: boolean = true;
 
+  uid: string = '';
+
 
   genAI = new GoogleGenerativeAI(EnvironmentConfiguration.apiKey);
 
@@ -94,6 +96,13 @@ export class MissionsComponent implements OnInit, AfterViewInit {
       this.isLoading = false;
       this.calculateTotalPagesAndPaginate(); 
     }
+
+
+
+
+
+
+
 
   }
 

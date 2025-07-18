@@ -7,6 +7,8 @@ import { CommonModule } from '@angular/common'; // Para *ngIf, *ngFor, etc.
 import { RouterModule } from '@angular/router'; // Para [routerLink]
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'; // Para <mat-spinner>
 import { FavoriteItemsService } from '../../app.component';
+import { ExpeditionService } from '../../services/expeditions.service';
+import { finalize, forkJoin } from 'rxjs';
 // Removi a importação do seu pipe customizado por enquanto para simplificar a correção
 
 // Interface para padronizar os itens favoritados
@@ -27,20 +29,22 @@ interface DadosFavorito {
   selector: 'app-favorites',
   templateUrl: './favorites.component.html',
   styleUrls: ['./favorites.component.css'],
-  standalone: true, // É importante marcar como standalone
+  standalone: true,
   imports: [
     CommonModule, // Adicionado
     RouterModule, // Adicionado
     MatProgressSpinnerModule // Adicionado
-    // Se você tiver o pipe 'translateMission', adicione-o aqui também. Ex: TranslateMissionPipe
   ]
 })
 export class FavoritesComponent implements OnInit {
 
-  isLoading: boolean = true;
+  isLoading: boolean = false;
   currentUser: User | null = null;
 
-  // Arrays para cada categoria de favorito
+  uid: string = '';
+
+  favoriteItemImages: { [id: string]: string } = {}; 
+
   favoriteMissions: FavoriteItem[] = [];
   favoriteSpaceships: FavoriteItem[] = [];
   favoriteAstronauts: FavoriteItem[] = [];
@@ -48,27 +52,62 @@ export class FavoritesComponent implements OnInit {
   constructor(                
     private auth: Auth,
     private firestore: Firestore,
-    private favoriteItemsService: FavoriteItemsService
+    private favoriteItemsService: FavoriteItemsService,
+    private expeditionService: ExpeditionService
   ) { }
 
   ngOnInit(): void {
     this.favoriteItemsService.dados$.subscribe(data => {
-      for(let i = 0; i < data.length; i++){
-          const item = new FavoriteItem();
-          item.id = data[i].userId;
-          item.name = data[i].itemId;
-          item.type = data[i].itemCateg;
-        
-          this.favoriteMissions.push(item);
+      this.favoriteMissions = [];
+      this.favoriteSpaceships = [];
+      this.favoriteAstronauts = [];
+  
+      for (let i = 0; i < data.arrayFavItems.length; i++) {
+        const item = new FavoriteItem();
+        item.id = data.arrayFavItems[i].userId;
+        item.name = data.arrayFavItems[i].itemId;
+        item.type = data.arrayFavItems[i].itemCateg;
+  
+        switch (item.type) {
+          case 'expedition':
+            this.favoriteMissions.push(item);
+            break;
+          case 'astronauts':
+            this.favoriteAstronauts.push(item);
+            break;
+          case 'spacecraft':
+            this.favoriteSpaceships.push(item);
+            break;
+        }
       }
+      this.uid = data.uids[0];
     });
+
+
+      const photoObservables = this.favoriteMissions.map(expedition =>
+        this.expeditionService.getCrewPhoto(expedition.name)
+          );
     
-    console.log(this.favoriteMissions)
+        if (photoObservables.length > 0) {
+          forkJoin(photoObservables).pipe(
+            finalize(() => {
+              this.isLoading = false;
+            })
+          ).subscribe(results => {
+            results.forEach((url, i) => {
+              this.favoriteItemImages[this.favoriteMissions[i].name] = url || 'assets/default.jpg';
+            });
+          });
+        } else {
+          this.isLoading = false;
+        }
+
+
+
     
     onAuthStateChanged(this.auth, (user) => {
       if (user) {
         this.currentUser = user;
-        this.fetchFavorites(user.uid);
       } else {
         this.isLoading = false;
         console.log("Nenhum usuário logado para buscar favoritos.");
@@ -76,26 +115,37 @@ export class FavoritesComponent implements OnInit {
     });
   }
 
-  async fetchFavorites(userId: string) {
-    this.isLoading = true;
-    setTimeout(() => {
-      this.loadMockData();
-      this.isLoading = false;
-    }, 1500);
+  ngOnChanges(){
+    this.favoriteItemsService.dados$.subscribe(data => {
+      this.favoriteMissions = [];
+      this.favoriteSpaceships = [];
+      this.favoriteAstronauts = [];
+  
+      for (let i = 0; i < data.arrayFavItems.length; i++) {
+        const item = new FavoriteItem();
+        item.id = data.arrayFavItems[i].userId;
+        item.name = data.arrayFavItems[i].itemId;
+        item.type = data.arrayFavItems[i].itemCateg;
+  
+        switch (item.type) {
+          case 'expedition':
+            this.favoriteMissions.push(item);
+            break;
+          case 'astronauts':
+            this.favoriteAstronauts.push(item);
+            break;
+          case 'spacecraft':
+            this.favoriteSpaceships.push(item);
+            break;
+        }
+      }
+      this.uid = data.uids[0];
+    });
   }
 
-  loadMockData() {
-    this.favoriteMissions = [
-      { id: 'exp68', name: 'Expedition 68', type: 'mission', imageUrl: 'assets/icons/expedition.jpeg' },
-      { id: 'crew-5', name: 'Crew-5', type: 'mission', imageUrl: 'assets/icons/expedition.jpeg' }
-    ];
-    this.favoriteSpaceships = [
-      { id: 'dragon', name: 'Crew Dragon', type: 'spaceship', imageUrl: 'assets/icons/spaceship.jpeg' }
-    ];
-    this.favoriteAstronauts = [
-       { id: 'astro1', name: 'Raja Chari', type: 'astronaut', imageUrl: 'assets/icons/astronaut.jpeg' },
-       { id: 'astro2', name: 'Thomas Marshburn', type: 'astronaut', imageUrl: 'assets/icons/astronaut.jpeg' },
-       { id: 'astro3', name: 'Kayla Barron', type: 'astronaut', imageUrl: 'assets/icons/astronaut.jpeg' }
-    ];
+  getImage(id: string): string {
+    return this.favoriteItemImages[id] || 'assets/default-astronaut.jpg';
   }
+
+
 }

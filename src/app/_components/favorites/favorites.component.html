@@ -1,11 +1,8 @@
-<!-- Loader que aparece enquanto os dados são carregados -->
 <div *ngIf="isLoading" class="loader-container">
   <mat-spinner></mat-spinner>
 </div>
 
-<!-- Conteúdo principal da página, visível após o carregamento -->
 <main *ngIf="!isLoading">
-  <!-- Seção de Título Principal -->
   <div class="bg-dark py-5">
     <div class="container text-center mb-4">
       <h1 class="display-5 fst-italic text-white">MEUS FAVORITOS</h1>
@@ -13,17 +10,15 @@
     </div>
   </div>
 
-  <!-- Seção de Missões Favoritas -->
   <div class="bg-light py-5">
     <div class="container">
       <h2 class="display-6 mb-4">Missões Favoritas</h2>
       <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
         <div *ngFor="let mission of favoriteMissions" class="col">
           <div class="card h-100 text-center bg-dark text-light rounded shadow p-3">
-            <img [src]="mission.imageUrl" class="rounded-circle mx-auto mb-3 shadow"
+            <img [src]="getImage(mission.id)" class="rounded-circle mx-auto mb-3 shadow"
                  style="width: 140px; height: 140px; object-fit: cover;" [alt]="mission.name">
             <div class="card-body">
-              <!-- Pipe 'translateMission' removido temporariamente -->
               <h4 class="fw-bold">{{ mission.name }}</h4>
               <p class="card-text text-white-50">Missão Espacial</p>
               <a class="btn btn-outline-light" [routerLink]="['/item', mission.name]">Veja mais »</a>
@@ -37,14 +32,13 @@
     </div>
   </div>
 
-  <!-- Seção de Naves Favoritas -->
   <div class="bg-dark py-5">
     <div class="container">
       <h2 class="display-6 mb-4 text-white">Naves Favoritas</h2>
       <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
         <div *ngFor="let spaceship of favoriteSpaceships" class="col">
            <div class="card h-100 text-center bg-secondary-dark text-light rounded shadow p-3">
-            <img [src]="spaceship.imageUrl" class="rounded-circle mx-auto mb-3 shadow"
+            <img [src]="getImage(spaceship.id)" class="rounded-circle mx-auto mb-3 shadow"
                  style="width: 140px; height: 140px; object-fit: cover;" [alt]="spaceship.name">
             <div class="card-body">
               <h4 class="fw-bold">{{ spaceship.name }}</h4>
@@ -60,14 +54,13 @@
     </div>
   </div>
 
-  <!-- Seção de Astronautas Favoritos -->
   <div class="bg-light py-5">
     <div class="container">
       <h2 class="display-6 mb-4">Astronautas Favoritos</h2>
       <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
         <div *ngFor="let astronaut of favoriteAstronauts" class="col">
           <div class="card h-100 text-center bg-dark text-light rounded shadow p-3">
-            <img [src]="astronaut.imageUrl" class="rounded-circle mx-auto mb-3 shadow"
+            <img [src]="getImage(astronaut.id)" class="rounded-circle mx-auto mb-3 shadow"
                  style="width: 140px; height: 140px; object-fit: cover;" [alt]="astronaut.name">
             <div class="card-body">
               <h4 class="fw-bold">{{ astronaut.name }}</h4>
