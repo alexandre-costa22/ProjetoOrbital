@@ -1,6 +1,6 @@
 // src/app/_components/astronauts/astronauts.component.ts
 
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Input } from '@angular/core';
 import { AstronautService } from '../../services/astronaut.service';
 import { Astronaut } from '../../models/astronauts.model';
 
@@ -28,6 +28,8 @@ declare var bootstrap: any;
   // =================== FIM DA CORREÇÃO ===================
 })
 export class AstronautsComponent implements OnInit, AfterViewInit {
+
+  @Input() isMainAstronautPage: boolean = false
 
   // ... O resto do seu código TypeScript continua igual e está correto ...
   allAstronauts: Astronaut[] = [];

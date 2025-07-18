@@ -37,9 +37,24 @@
     </div>
   </div>
   <br>
-  <app-missions
-    [isMainMissionPage]="false"
-  ></app-missions>
+
+  <div *ngIf="itemCateg == 'missions'">
+      <app-missions
+      [isMainMissionPage]="false"
+    ></app-missions>
+  </div>
+  <div *ngIf="itemCateg == 'astronauts'">
+    <app-spaceships
+    [isMainSpaceshipsPage]="false"
+  ></app-spaceships>
+</div>
+<div *ngIf="itemCateg == 'spaceships'">
+  <app-astronauts
+  [isMainAstronautPage]="false"
+></app-astronauts>
+</div>
+
+
 </div>
 <br>
 <br>

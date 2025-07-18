@@ -1,6 +1,6 @@
 
 
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Input } from '@angular/core';
 import { SpacecraftService } from '../../services/spacecraft.service';
 import { Spaceship } from '../../models/spacecraft.model';
 import { CommonModule } from '@angular/common';
@@ -22,9 +22,12 @@ declare var bootstrap: any;
 })
 export class SpaceshipsComponent implements OnInit, AfterViewInit {
 
+  @Input() isMainSpaceshipsPage: boolean = true;
+
   activeSpaceships: Spaceship[] = [];
   retiredSpaceships: Spaceship[] = [];
   isLoading: boolean = true;
+
 
   constructor(private spacecraftService: SpacecraftService) {}
 
@@ -37,16 +40,18 @@ export class SpaceshipsComponent implements OnInit, AfterViewInit {
         console.log('Resposta da API recebida:', response);
 
 
-        const allSpaceships = response.spaceships || [];
+        const allSpaceships = response || [];
 
-        for (const ship of allSpaceships) {
-          if (ship.status.name === 'Retired' || ship.status.name === 'Destroyed') {
-            this.retiredSpaceships.push(ship);
-          } else {
+        console.log(response)
 
-            this.activeSpaceships.push(ship);
-          }
-        }
+        // for (const ship of allSpaceships) {
+        //   if (ship.status.name === 'Retired' || ship.status.name === 'Destroyed') {
+        //     this.retiredSpaceships.push(ship);
+        //   } else {
+
+        //     this.activeSpaceships.push(ship);
+        //   }
+        // }
 
 
         console.log('Naves Ativas/Em Construção:', this.activeSpaceships);
