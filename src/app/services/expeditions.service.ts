@@ -19,7 +19,7 @@ export class DadosService {
 })
 export class ExpeditionService {
 
-  private apiUrl = 'http://orbital-external-requests.onrender.com';
+  private apiUrl = 'https://orbital-external-requests.onrender.com';
   private baseUrl = 'https://images-api.nasa.gov/search';
 
   constructor(private http: HttpClient) {}
